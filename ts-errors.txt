@@ -1,0 +1,16 @@
+src/components/charts/CashFlowChart.tsx(67,13): error TS2322: Type '(value: number, name: string) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType> & ((value: ValueType, name: NameType, item: TooltipPayloadEntry, index: number, payload: TooltipPayload) => ReactNode | [...])'.
+  Type '(value: number, name: string) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType>'.
+    Types of parameters 'value' and 'value' are incompatible.
+      Type 'ValueType | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+src/components/charts/MonthlyOrdersChart.tsx(69,13): error TS2322: Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType> & ((value: ValueType, name: NameType, item: TooltipPayloadEntry, index: number, payload: TooltipPayload) => ReactNode | [...])'.
+  Type '(value: number) => [string, string]' is not assignable to type 'Formatter<ValueType, NameType>'.
+    Types of parameters 'value' and 'value' are incompatible.
+      Type 'ValueType | undefined' is not assignable to type 'number'.
+        Type 'undefined' is not assignable to type 'number'.
+src/lib/pdfGenerator.ts(6,19): error TS2307: Cannot find module 'jspdf' or its corresponding type declarations.
+src/lib/pdfGenerator.ts(7,23): error TS2307: Cannot find module 'jspdf-autotable' or its corresponding type declarations.
+src/lib/pdfGenerator.ts(105,65): error TS2339: Property 'finalY' does not exist on type 'number'.
+src/lib/pdfGenerator.ts(129,65): error TS2339: Property 'finalY' does not exist on type 'number'.
+src/lib/pdfGenerator.ts(152,65): error TS2339: Property 'finalY' does not exist on type 'number'.
+src/lib/pdfGenerator.ts(181,65): error TS2339: Property 'finalY' does not exist on type 'number'.

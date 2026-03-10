@@ -178,8 +178,16 @@ input:focus, textarea:focus, select:focus { outline: none; }
 .btnSecondary:active { transform: translateY(0); }
 
 /* Legacy button aliases */
-.btn-primary   { @apply btnPrimary; }
-.btn-secondary { @apply btnSecondary; }
+.btn-primary { 
+  background: linear-gradient(120deg,#2563EB 0%,#3B82F6 100%);
+  color: #fff; border: none; border-radius: 8px; padding: 10px 20px;
+  font-weight: 600; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-secondary {
+  background: #FFFFFF; color: #0F172A; border: 1.5px solid #E2E8F0;
+  border-radius: 8px; padding: 10px 20px; font-weight: 500; font-size: 14px;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 7px;
+}
 .btn-danger {
   background: linear-gradient(120deg,#DC2626 0%,#EF4444 100%);
   color: #fff;

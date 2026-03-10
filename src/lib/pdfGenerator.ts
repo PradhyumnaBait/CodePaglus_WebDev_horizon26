@@ -102,7 +102,7 @@ export function generateBusinessHealthPDF(data: ReportData): void {
     margin: { left: 15, right: 15 },
   });
 
-  y = (doc as unknown as Record<string, number>).lastAutoTable?.finalY ?? y + 30;
+  y = (doc as any).lastAutoTable?.finalY ?? y + 30;
   y += 10;
 
   // ---- Inventory Summary ----
@@ -126,7 +126,7 @@ export function generateBusinessHealthPDF(data: ReportData): void {
     margin: { left: 15, right: 15 },
   });
 
-  y = (doc as unknown as Record<string, number>).lastAutoTable?.finalY ?? y + 30;
+  y = (doc as any).lastAutoTable?.finalY ?? y + 30;
   y += 10;
 
   // ---- Support Metrics ----
@@ -149,7 +149,7 @@ export function generateBusinessHealthPDF(data: ReportData): void {
     margin: { left: 15, right: 15 },
   });
 
-  y = (doc as unknown as Record<string, number>).lastAutoTable?.finalY ?? y + 30;
+  y = (doc as any).lastAutoTable?.finalY ?? y + 30;
   y += 10;
 
   // Check if we need a new page
@@ -178,7 +178,7 @@ export function generateBusinessHealthPDF(data: ReportData): void {
     margin: { left: 15, right: 15 },
   });
 
-  y = (doc as unknown as Record<string, number>).lastAutoTable?.finalY ?? y + 30;
+  y = (doc as any).lastAutoTable?.finalY ?? y + 30;
   y += 10;
 
   // ---- Alert Summary ----

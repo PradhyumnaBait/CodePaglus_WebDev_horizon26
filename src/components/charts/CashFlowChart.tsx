@@ -64,7 +64,7 @@ export function CashFlowChart() {
           />
           <Tooltip
             contentStyle={TOOLTIP_STYLE}
-            formatter={(value: number, name: string) => [
+            formatter={(value: any, name: any) => [
               `₹${value.toLocaleString('en-IN')}`,
               name === 'revenue' ? 'Revenue' : name === 'expenses' ? 'Expenses' : 'Net Profit',
             ]}

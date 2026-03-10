@@ -66,7 +66,7 @@ export function MonthlyOrdersChart() {
           />
           <Tooltip
             contentStyle={TOOLTIP_STYLE}
-            formatter={(value: number) => [`${value} orders`, 'Total Orders']}
+            formatter={(value: any) => [`${value} orders`, 'Total Orders']}
           />
           <Bar
             dataKey="orders"
