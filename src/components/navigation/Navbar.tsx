@@ -25,6 +25,8 @@ import { formatRelativeTime } from '@/lib/utils';
 const ROUTE_LABELS: Record<string, string[]> = {
   '/dashboard': ['Dashboard'],
   '/dashboard/operations': ['Dashboard', 'Operations'],
+  '/dashboard/inventory': ['Dashboard', 'Inventory'],
+  '/dashboard/reports': ['Dashboard', 'Reports'],
   '/dashboard/war-room': ['Dashboard', 'War Room'],
   '/dashboard/alerts': ['Dashboard', 'Alerts'],
   '/dashboard/settings': ['Dashboard', 'Settings'],

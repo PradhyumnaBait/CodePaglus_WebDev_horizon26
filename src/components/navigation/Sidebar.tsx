@@ -19,6 +19,8 @@ import {
   LogOut,
   User,
   Zap,
+  Package,
+  FileText,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAlertsStore } from '@/store/alertsStore';
@@ -36,6 +38,8 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Operations', href: '/dashboard/operations', icon: Settings2 },
+  { label: 'Inventory', href: '/dashboard/inventory', icon: Package },
+  { label: 'Reports', href: '/dashboard/reports', icon: FileText },
   { label: 'War Room', href: '/dashboard/war-room', icon: Siren, warRoom: true },
   { label: 'Alerts', href: '/dashboard/alerts', icon: Bell },
   { label: 'Settings', href: '/dashboard/settings', icon: Settings },

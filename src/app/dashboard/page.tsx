@@ -2,13 +2,14 @@
 
 // ============================================================
 // OpsPulse — Owner Dashboard (Live Data)
-// Stress Gauge + KPI Cards + Alert Feed + Sales Trend
+// Stress Gauge + KPI Cards + Alert Feed + Sales Trend + Charts
 // ============================================================
 import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import {
   ShoppingCart, Package, HeadphonesIcon,
   Clock, Zap, BarChart3, TrendingUp, ArrowUpRight,
+  DollarSign, CalendarDays,
 } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -23,6 +24,8 @@ import { AlertCard } from '@/components/cards/AlertCard';
 import { TrendChart } from '@/components/charts/TrendChart';
 import { LiveEventFeed } from '@/components/charts/LiveEventFeed';
 import { DashboardCard, CardHeader } from '@/components/cards/DashboardCard';
+import { CashFlowChart } from '@/components/charts/CashFlowChart';
+import { MonthlyOrdersChart } from '@/components/charts/MonthlyOrdersChart';
 import { getStressColor } from '@/lib/config/constants';
 
 export default function DashboardPage() {
@@ -254,7 +257,26 @@ export default function DashboardPage() {
         </DashboardCard>
       </div>
 
-      {/* ---- Row 3: Quick Stats ---- */}
+      {/* ---- Row 3: Cash Flow + Monthly Orders Charts ---- */}
+      <div className="grid grid-cols-12 gap-5">
+        <DashboardCard className="col-span-12 lg:col-span-7" delay={0.32}>
+          <div className="flex items-center gap-2 mb-3">
+            <DollarSign size={14} className="text-[#22C55E]" />
+            <span className="text-[13px] font-600 text-[#F1F5F9]">Cash Flow — Last 7 Days</span>
+          </div>
+          <CashFlowChart />
+        </DashboardCard>
+
+        <DashboardCard className="col-span-12 lg:col-span-5" delay={0.34}>
+          <div className="flex items-center gap-2 mb-3">
+            <CalendarDays size={14} className="text-[#3B82F6]" />
+            <span className="text-[13px] font-600 text-[#F1F5F9]">Monthly Orders</span>
+          </div>
+          <MonthlyOrdersChart />
+        </DashboardCard>
+      </div>
+
+      {/* ---- Row 4: Quick Stats ---- */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
           { label: 'Total Revenue',    value: totalRevenue > 0 ? `₹${totalRevenue.toLocaleString('en-IN')}` : '₹0', icon: TrendingUp,    color: '#3B82F6' },
