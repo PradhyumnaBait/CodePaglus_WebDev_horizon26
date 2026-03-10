@@ -277,7 +277,7 @@ export default function DashboardPage() {
       </div>
 
       {/* ---- Row 4: Quick Stats ---- */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {[
           { label: 'Total Revenue',    value: totalRevenue > 0 ? `₹${totalRevenue.toLocaleString('en-IN')}` : '₹0', icon: TrendingUp,    color: '#3B82F6' },
           { label: 'Active Alerts',    value: topAlerts.length,                                                          icon: Zap,           color: '#EF4444' },

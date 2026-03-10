@@ -81,7 +81,7 @@ export default function OperationsPage() {
   const anomalyCount = alerts.filter((a) => a.status === 'active' && a.severity === 'anomaly').length;
 
   return (
-    <div className="space-y-4 animate-fade-in">
+    <div className="space-y-5 animate-fade-in">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -125,13 +125,14 @@ export default function OperationsPage() {
       )}
 
       {/* ---- 3-Column Grid ---- */}
-      <div className="grid grid-cols-12 gap-4" style={{ minHeight: '560px' }}>
+      {/* reverted spacing to 24px gutter (gap-6); removed fixed minHeight to let content flow naturally */}
+      <div className="grid grid-cols-12 gap-6">
 
         {/* ---- LEFT: Alert Queue ---- */}
         <div className="col-span-12 lg:col-span-3 flex flex-col gap-3">
           <DashboardCard delay={0.05} className="flex-1 flex flex-col min-h-0">
             {/* Header */}
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-4">
               <AlertTriangle size={14} className="text-[#F59E0B]" />
               <span className="text-[13px] font-600 text-[#0F172A]">Alert Queue</span>
               <span className="ml-auto text-[10px] bg-[rgba(239,68,68,0.15)] text-[#FCA5A5] px-1.5 py-0.5 rounded-full font-700">
@@ -153,17 +154,12 @@ export default function OperationsPage() {
             </div>
 
             {/* Filter chips */}
-            <div className="flex gap-1 mb-3 overflow-x-auto pb-1 flex-wrap">
+            <div className="flex gap-1.5 mb-3 overflow-x-auto pb-1 flex-wrap">
               {(['all', 'crisis', 'anomaly', 'opportunity'] as AlertFilter[]).map((f) => (
                 <button
                   key={f}
                   onClick={() => setAlertFilter(f)}
-                  className={cn(
-                    'text-[10px] font-600 uppercase px-2 py-1 rounded-lg transition-colors flex-shrink-0',
-                    alertFilter === f
-                      ? 'bg-[#3B82F6] text-white'
-                      : 'text-[#64748B] bg-[#FFFFFF] hover:text-[#0F172A]',
-                  )}
+                  className={cn('filterChip', alertFilter === f && 'active')}
                 >
                   {f}
                 </button>
@@ -249,7 +245,7 @@ export default function OperationsPage() {
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#1E293B]">
+                <tbody className="divide-y divide-[#F1F5F9]">
                   {sortedInventory.map((item, i) => {
                     const s = STOCK_STATUS[item.status as keyof typeof STOCK_STATUS];
                     return (
@@ -261,7 +257,7 @@ export default function OperationsPage() {
                         className="hover:bg-[rgba(255,255,255,0.02)] transition-colors"
                       >
                         <td className="py-2.5 pr-3 text-[12px] font-600 text-[#64748B]">{item.sku}</td>
-                        <td className="py-2.5 pr-3 text-[12px] text-[#E2E8F0] truncate max-w-[120px]">{item.name}</td>
+                        <td className="py-2.5 pr-3 text-[12px] text-[#334155] truncate max-w-[120px]">{item.name}</td>
                         <td className="py-2.5 pr-3 text-[13px] font-700 text-[#0F172A] tabular-nums">{item.stock}</td>
                         <td className="py-2.5 pr-3 text-[12px] text-[#64748B] tabular-nums">{item.reorder}</td>
                         <td className="py-2.5">
@@ -290,9 +286,9 @@ export default function OperationsPage() {
               return (
                 <button
                   key={action.label}
-                  className="flex items-center justify-center gap-2 py-2.5 rounded-xl border text-[12px] font-600 transition-all hover:opacity-80"
+                  className="actionBtn"
                   style={{
-                    borderColor:     `${action.color}30`,
+                    borderColor:     `${action.color}35`,
                     backgroundColor: `${action.color}10`,
                     color:           action.color,
                   }}

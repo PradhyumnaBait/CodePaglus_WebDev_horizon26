@@ -92,31 +92,41 @@ input:focus, textarea:focus, select:focus { outline: none; }
 /* ============================================================
    Keyframes
    ============================================================ */
-@keyframes kFadeUp   { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-@keyframes kFadeIn   { from { opacity:0; } to { opacity:1; } }
-@keyframes kSlideR   { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
-@keyframes kPulse    { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
-@keyframes kSpin     { to { transform:rotate(360deg); } }
-@keyframes kScale    { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
-@keyframes kBlink    { 0%,100% { opacity:1; } 50% { opacity:0; } }
-@keyframes kProgress { from { width:0; } to { width:var(--w); } }
-@keyframes shimmer   { 0% { background-position: -468px 0; } 100% { background-position: 468px 0; } }
+@keyframes kFadeUp    { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+@keyframes kFadeIn    { from { opacity:0; } to { opacity:1; } }
+@keyframes kSlideR    { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
+@keyframes kSlideDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes kPulse     { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+@keyframes kSpin      { to { transform:rotate(360deg); } }
+@keyframes kScale     { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+@keyframes kBounceIn  { 0% { opacity:0; transform:scale(0.88); } 60% { opacity:1; transform:scale(1.04); } 100% { transform:scale(1); } }
+@keyframes kBlink     { 0%,100% { opacity:1; } 50% { opacity:0; } }
+@keyframes kProgress  { from { width:0; } to { width:var(--w); } }
+@keyframes kFloat     { 0%,100% { transform:translateY(0px); } 50% { transform:translateY(-6px); } }
+@keyframes kShine     { 0% { left:-80%; } 100% { left:120%; } }
+@keyframes shimmer    { 0% { background-position: -468px 0; } 100% { background-position: 468px 0; } }
 @keyframes crisis-pulse { 0%,100% { background-color: rgba(239,68,68,0.08); } 50% { background-color: rgba(239,68,68,0.15); } }
+@keyframes glowPulse  { 0%,100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); } 50% { box-shadow: 0 0 16px 4px rgba(37,99,235,0.18); } }
 
-.aFadeUp  { animation: kFadeUp  0.45s cubic-bezier(.16,1,.3,1) both; }
-.aFadeIn  { animation: kFadeIn  0.35s ease both; }
-.aSlideR  { animation: kSlideR  0.4s  cubic-bezier(.16,1,.3,1) both; }
-.aScale   { animation: kScale   0.3s  cubic-bezier(.16,1,.3,1) both; }
-.aPulse   { animation: kPulse   2.2s ease-in-out infinite; }
-.aBlink   { animation: kBlink   1.1s step-end infinite; }
-.aSpin    { animation: kSpin    0.75s linear infinite; }
+.aFadeUp   { animation: kFadeUp   0.45s cubic-bezier(.16,1,.3,1) both; }
+.aFadeIn   { animation: kFadeIn   0.35s ease both; }
+.aSlideR   { animation: kSlideR   0.4s  cubic-bezier(.16,1,.3,1) both; }
+.aSlideD   { animation: kSlideDown 0.35s cubic-bezier(.16,1,.3,1) both; }
+.aScale    { animation: kScale    0.3s  cubic-bezier(.16,1,.3,1) both; }
+.aBounce   { animation: kBounceIn 0.4s  cubic-bezier(.16,1,.3,1) both; }
+.aPulse    { animation: kPulse    2.2s  ease-in-out infinite; }
+.aBlink    { animation: kBlink    1.1s  step-end infinite; }
+.aSpin     { animation: kSpin     0.75s linear infinite; }
+.aFloat    { animation: kFloat    3.5s  ease-in-out infinite; }
 
 /* Legacy animation aliases (keep existing code working) */
-.animate-fade-in      { animation: kFadeIn  0.35s ease both; }
-.animate-slide-in-up  { animation: kFadeUp  0.45s cubic-bezier(.16,1,.3,1) both; }
-.animate-slide-in-right { animation: kSlideR 0.4s cubic-bezier(.16,1,.3,1) both; }
-.animate-pulse-glow   { animation: kPulse   2.2s ease-in-out infinite; }
-.animate-crisis-pulse { animation: crisis-pulse 2s ease-in-out infinite; }
+.animate-fade-in        { animation: kFadeIn   0.35s ease both; }
+.animate-slide-in-up    { animation: kFadeUp   0.45s cubic-bezier(.16,1,.3,1) both; }
+.animate-slide-in-right { animation: kSlideR   0.4s  cubic-bezier(.16,1,.3,1) both; }
+.animate-pulse-glow     { animation: kPulse    2.2s  ease-in-out infinite; }
+.animate-crisis-pulse   { animation: crisis-pulse 2s ease-in-out infinite; }
+.animate-glow-pulse     { animation: glowPulse 2.5s  ease-in-out infinite; }
+.animate-float          { animation: kFloat    3.5s  ease-in-out infinite; }
 .animate-shimmer {
   background: linear-gradient(to right, #F8FAFC 0%, #F1F5F9 20%, #F8FAFC 40%);
   background-size: 936px 100%;
@@ -138,10 +148,11 @@ input:focus, textarea:focus, select:focus { outline: none; }
    Button Classes
    ============================================================ */
 .btnPrimary {
-  background: linear-gradient(120deg,#2563EB 0%,#3B82F6 100%);
+  background: linear-gradient(120deg, #1D4ED8 0%, #2563EB 50%, #3B82F6 100%);
+  background-size: 200% 100%;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 10px 20px;
   font-weight: 600;
   font-size: 14px;
@@ -150,19 +161,34 @@ input:focus, textarea:focus, select:focus { outline: none; }
   align-items: center;
   gap: 7px;
   letter-spacing: -0.01em;
-  transition: filter 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+  overflow: hidden;
+  transition: background-position 0.3s ease, transform 0.18s ease, box-shadow 0.22s ease;
   white-space: nowrap;
   text-decoration: none;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.20);
 }
-.btnPrimary:hover  { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.25); }
-.btnPrimary:active { transform: translateY(0); filter: brightness(0.97); }
+.btnPrimary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+.btnPrimary:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 6px 22px rgba(37,99,235,0.32); }
+.btnPrimary:hover::after { animation: kShine 0.55s ease forwards; }
+.btnPrimary:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(37,99,235,0.18); }
 .btnPrimary:disabled { opacity: 0.5; pointer-events: none; cursor: not-allowed; }
 
 .btnSecondary {
   background: #FFFFFF;
-  color: #0F172A;
+  color: #334155;
   border: 1.5px solid #E2E8F0;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 10px 20px;
   font-weight: 500;
   font-size: 14px;
@@ -170,12 +196,13 @@ input:focus, textarea:focus, select:focus { outline: none; }
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+  transition: border-color 0.18s, background 0.18s, color 0.15s, transform 0.18s, box-shadow 0.18s;
   white-space: nowrap;
   text-decoration: none;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.06);
 }
-.btnSecondary:hover  { border-color: #CBD5E1; background: #F8FAFC; transform: translateY(-1px); }
-.btnSecondary:active { transform: translateY(0); }
+.btnSecondary:hover  { border-color: #C7D2FE; background: #EEF2FF; color: #2563EB; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,0.10); }
+.btnSecondary:active { transform: translateY(0); box-shadow: none; }
 
 /* Legacy button aliases */
 .btn-primary { 
@@ -233,7 +260,7 @@ input:focus, textarea:focus, select:focus { outline: none; }
   align-items: center;
   gap: 10px;
   padding: 9px 12px;
-  border-radius: 8px;
+  border-radius: 9px;
   border: none;
   background: transparent;
   color: #64748B;
@@ -242,18 +269,33 @@ input:focus, textarea:focus, select:focus { outline: none; }
   cursor: pointer;
   width: 100%;
   text-align: left;
-  transition: background 0.15s ease, color 0.15s ease;
+  position: relative;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.15s ease;
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.01em;
   text-decoration: none;
+  overflow: hidden;
 }
-.navItem:hover { background: #F6F8FB; color: #334155; }
-/* CHANGE 1: Focus-visible outline for keyboard accessibility */
-.navItem:focus-visible { outline: 2px solid rgba(37,99,235,0.5); outline-offset: -2px; }
+.navItem:hover {
+  background: linear-gradient(90deg, #F0F4FF, #F6F8FB);
+  color: #1E40AF;
+  transform: translateX(2px);
+}
+.navItem:focus-visible { outline: 2px solid rgba(37,99,235,0.4); outline-offset: -2px; }
 .navItem.active {
-  background: #EFF6FF;
-  color: #2563EB;
+  background: linear-gradient(90deg, #EFF6FF, #DBEAFE);
+  color: #1D4ED8;
   font-weight: 600;
+}
+.navItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #2563EB, #3B82F6);
 }
 
 /* ============================================================
@@ -261,22 +303,37 @@ input:focus, textarea:focus, select:focus { outline: none; }
    ============================================================ */
 .ops-card {
   background: #FFFFFF;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.04);
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 4px 16px rgba(15,23,42,0.05);
   padding: 22px;
-  transition: transform 0.2s cubic-bezier(.16,1,.3,1), box-shadow 0.2s cubic-bezier(.16,1,.3,1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s cubic-bezier(.16,1,.3,1), box-shadow 0.22s cubic-bezier(.16,1,.3,1), border-color 0.22s ease;
+}
+.ops-card::before {
+  content: '';
+  position: absolute;
+  inset-x: 0;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.08) 50%, transparent 100%);
+  transition: opacity 0.22s ease;
+  opacity: 0;
 }
 .ops-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 24px rgba(15,23,42,0.08), 0 1px 4px rgba(15,23,42,0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(15,23,42,0.09), 0 2px 8px rgba(37,99,235,0.06);
+  border-color: #BFDBFE;
 }
+.ops-card:hover::before { opacity: 1; }
 .ops-card-flat {
   background: #FFFFFF;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.04);
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 2px 8px rgba(15,23,42,0.04);
   padding: 22px;
+  transition: border-color 0.2s ease;
 }
 
 /* ============================================================
@@ -293,9 +350,10 @@ th {
 td {
   padding: 12px 16px; font-size: 13.5px;
   color: #334155; border-bottom: 1px solid #F1F5F9;
+  transition: background 0.15s ease;
 }
 tr:last-child td { border-bottom: none; }
-tr:hover td { background: #FAFBFF; }
+tr:hover td { background: #F8FAFC; }
 
 /* ============================================================
    Badge / Tag
@@ -369,7 +427,7 @@ tr:hover td { background: #FAFBFF; }
 .glow-yellow { box-shadow: 0 4px 20px rgba(245,158,11,0.25); }
 
 /* ============================================================
-   CHANGE 1: Enhanced interactive states — buttons, inputs, links
+   Enhanced interactive states — buttons, inputs, links
    ============================================================ */
 
 /* Input — stronger focus ring + smooth border transition */
@@ -394,6 +452,124 @@ tr:hover td { background: #FAFBFF; }
   outline-offset: 2px;
 }
 
+/* btn-danger — hover lift + focus ring */
+.btn-danger:focus-visible {
+  outline: 2px solid rgba(239,68,68,0.5);
+  outline-offset: 2px;
+}
+
+/* btn-primary legacy — transitions */
+.btn-primary {
+  transition: filter 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.btn-primary:hover  { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(37,99,235,0.25); }
+.btn-primary:active { transform: translateY(0); filter: brightness(0.97); }
+.btn-primary:focus-visible { outline: 2px solid rgba(37,99,235,0.6); outline-offset: 2px; }
+
+/* btn-secondary legacy — transitions */
+.btn-secondary {
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+}
+.btn-secondary:hover  { border-color: #CBD5E1; background: #F8FAFC; transform: translateY(-1px); }
+.btn-secondary:active { transform: translateY(0); }
+.btn-secondary:focus-visible { outline: 2px solid rgba(37,99,235,0.5); outline-offset: 2px; }
+
+/* ============================================================
+   Filter chip — used in alert/filter UI
+   ============================================================ */
+.filterChip {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1.5px solid #E2E8F0;
+  background: #FFFFFF;
+  color: #64748B;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+.filterChip:hover {
+  border-color: #CBD5E1;
+  color: #334155;
+  background: #F8FAFC;
+  transform: translateY(-1px);
+}
+.filterChip:active { transform: translateY(0); }
+.filterChip:focus-visible { outline: 2px solid rgba(37,99,235,0.5); outline-offset: 2px; }
+.filterChip.active {
+  background: #2563EB;
+  color: #FFFFFF;
+  border-color: #2563EB;
+}
+.filterChip.active:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Action button — ghost colored buttons (ops page)
+   ============================================================ */
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1.5px solid;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+.actionBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15,23,42,0.1);
+  opacity: 0.9;
+}
+.actionBtn:active { transform: translateY(0); opacity: 1; }
+.actionBtn:focus-visible { outline: 2px solid rgba(37,99,235,0.5); outline-offset: 2px; }
+
+/* ============================================================
+   Textarea interactive states
+   ============================================================ */
+textarea.inputField:hover {
+  border-color: #CBD5E1;
+}
+textarea.inputField:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* ============================================================
+   Navbar icon buttons — hover/focus states
+   ============================================================ */
+.navIconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #64748B;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.navIconBtn:hover {
+  background: #FFFFFF;
+  border-color: #CBD5E1;
+  color: #334155;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(15,23,42,0.06);
+}
+.navIconBtn:active { transform: translateY(0); }
+.navIconBtn:focus-visible { outline: 2px solid rgba(37,99,235,0.5); outline-offset: 2px; }
+
 /* ============================================================
    CHANGE 2: Role selection card hover state (used in signup)
    ============================================================ */
@@ -410,63 +586,71 @@ tr:hover td { background: #FAFBFF; }
 }
 
 /* ============================================================
-   CHANGE 1: Responsive layout — Mobile & Tablet breakpoints
+   Explicit spacing utilities — ensure Tailwind v4 compatibility
    ============================================================ */
+.space-y-5 > * + * { margin-top: 1.25rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-2\.5 > * + * { margin-top: 0.625rem; }
 
-/* Tablet (≤ 1024px): tighten sidebar, reduce main padding */
-@media (max-width: 1024px) {
-  /* Reduce dashboard content padding */
-  main { padding: 20px !important; }
-
-  /* Ops card horizontal padding reduced */
-  .ops-card, .ops-card-flat { padding: 18px; }
+/* ============================================================
+   Dashboard card — consistent padding at full desktop
+   ============================================================ */
+.ops-card, .ops-card-flat {
+  padding: 20px 22px;
 }
 
-/* Mobile (≤ 768px): hide sidebar, stack content */
+/* ============================================================
+   Responsive layout — Tablet & Mobile breakpoints
+   ============================================================ */
+
+/* Tablet (≤ 1024px): tighten card padding, collapse wide grid cols */
+@media (max-width: 1024px) {
+  main { padding: 20px !important; }
+  .ops-card, .ops-card-flat { padding: 18px 20px; }
+
+  .grid.grid-cols-12 > .lg\:col-span-3 { grid-column: span 6; }
+  .grid.grid-cols-12 > .lg\:col-span-4 { grid-column: span 6; }
+  .grid.grid-cols-12 > .lg\:col-span-5 { grid-column: span 12; }
+  .grid.grid-cols-12 > .lg\:col-span-6 { grid-column: span 12; }
+  .grid.grid-cols-12 > .lg\:col-span-7 { grid-column: span 12; }
+  .grid.grid-cols-12 > .lg\:col-span-9 { grid-column: span 12; }
+}
+
+/* Mobile (≤ 768px): hide sidebar, stack all content */
 @media (max-width: 768px) {
-  /* Sidebar is hidden on mobile — content takes full width */
-  aside {
-    display: none !important;
-  }
+  aside { display: none !important; }
+  main { padding: 16px !important; }
 
-  /* Main content takes full width when sidebar hidden */
-  main {
-    padding: 16px !important;
-  }
-
-  /* Auth card — full-width on mobile with horizontal padding */
+  /* Auth card — full-width on mobile */
   .relative.z-10 {
     margin-left: 12px !important;
     margin-right: 12px !important;
   }
 
-  /* Card padding reduced on small screens */
-  .ops-card, .ops-card-flat { padding: 14px; }
+  .ops-card, .ops-card-flat { padding: 16px; }
 
-  /* Role selection grid stacks to single column on mobile */
-  .roleCard { width: 100%; }
+  /* All 12-col grid items stack */
+  .grid.grid-cols-12 > [class*="col-span"] {
+    grid-column: span 12 !important;
+  }
 
-  /* Stats grid — 2 cols minimum on mobile (was 4) */
   .grid.grid-cols-2 { grid-template-columns: 1fr 1fr; }
+  .grid.grid-cols-3 { grid-template-columns: 1fr 1fr; }
 
-  /* Navbar horizontal padding tightened */
   header { padding-left: 12px !important; padding-right: 12px !important; }
+
+  .flex.items-center.justify-between { flex-wrap: wrap; gap: 8px; }
 }
 
-/* Small mobile (≤ 480px): further tighten spacing */
+/* Small mobile (≤ 480px): further tighten */
 @media (max-width: 480px) {
   main { padding: 12px !important; }
+  .ops-card, .ops-card-flat { padding: 14px; }
 
-  /* Single-column grids on very small screens */
-  .grid-cols-2.sm\:grid-cols-4 {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  /* Auth step progress text smaller */
-  .ops-card, .ops-card-flat { padding: 12px; }
-
-  /* Signup / login card padding */
-  .bg-white.rounded-2xl.p-8 {
-    padding: 20px !important;
-  }
+  .bg-white.rounded-2xl.p-8 { padding: 20px !important; }
+  .grid.grid-cols-2 { grid-template-columns: 1fr; }
+  .sm\:grid-cols-4 { grid-template-columns: 1fr 1fr; }
 }
+

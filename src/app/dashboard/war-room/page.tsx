@@ -144,7 +144,7 @@ export default function WarRoomPage() {
             : 'bg-[rgba(245,158,11,0.06)] border-[rgba(245,158,11,0.2)]'
         }`}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <div className={`flex items-center justify-center w-10 h-10 rounded-xl ${
             isCritical ? 'bg-[rgba(239,68,68,0.15)]' : 'bg-[rgba(245,158,11,0.15)]'
           }`}>
@@ -161,7 +161,7 @@ export default function WarRoomPage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <div
             className="px-3 py-1.5 rounded-xl text-[13px] font-700 uppercase tracking-wide"
             style={{ color: scoreColor, backgroundColor: `${scoreColor}12`, border: `1px solid ${scoreColor}30` }}
@@ -169,7 +169,7 @@ export default function WarRoomPage() {
             {score >= 75 ? '🔴 CRITICAL' : score >= 50 ? '🟡 ELEVATED' : '🟢 MODERATE'}
           </div>
           <Link href="/dashboard">
-            <button className="text-[12px] text-[#64748B] hover:text-[#0F172A] px-3 py-1.5 rounded-lg border border-[#E2E8F0] transition-colors">
+            <button className="btnSecondary text-[12px] py-1.5 px-3">
               ← Back
             </button>
           </Link>
@@ -177,7 +177,7 @@ export default function WarRoomPage() {
       </motion.div>
 
       {/* ---- Main Grid ---- */}
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-6">
 
         {/* ---- LEFT: Stress Gauge + history ---- */}
         <div className="col-span-12 lg:col-span-3 space-y-4">
@@ -322,7 +322,7 @@ export default function WarRoomPage() {
               value={incidentSummary}
               onChange={(e) => setIncidentSummary(e.target.value)}
               placeholder="Describe the incident, actions taken, and resolution..."
-              className="w-full h-24 bg-[#FFFFFF] border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-[12px] text-[#E2E8F0] placeholder:text-[#475569] resize-none focus:outline-none focus:border-[#3B82F6] transition-colors"
+              className="inputField h-24 text-[12px] text-[#0F172A] placeholder:text-[#94A3B8] resize-none"
             />
             <div className="flex items-center justify-between mt-2">
               <span className="text-[10px] text-[#475569]">{incidentSummary.length} chars</span>

@@ -118,8 +118,8 @@ export default function InventorySetupPage() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'radial-gradient(circle at 50% 0%,#EAF4FF,#F6F8FB 70%)', padding: '30px 20px', overflowY: 'auto' }}>
-      <div className="aScale" style={{ background: D.surface, borderRadius: 16, padding: '32px 36px', maxWidth: 800, margin: '0 auto', boxShadow: '0 20px 60px rgba(15,23,42,0.10)', border: `1px solid ${D.border}` }}>
+    <div style={{ minHeight: '100vh', background: 'radial-gradient(circle at 50% 0%,#EAF4FF,#F6F8FB 70%)', padding: 'clamp(24px,4vw,40px) clamp(16px,3vw,32px)', overflowY: 'auto' }}>
+      <div className="aScale" style={{ background: D.surface, borderRadius: 18, padding: 'clamp(28px,4vw,44px) clamp(28px,4vw,52px)', maxWidth: 1100, margin: '0 auto', boxShadow: '0 20px 60px rgba(15,23,42,0.10)', border: `1px solid ${D.border}` }}>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 26 }}>

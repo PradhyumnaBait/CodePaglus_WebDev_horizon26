@@ -144,7 +144,7 @@ export default function ReportsPage() {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {[
           { label: 'Total Reports', value: reports.length, color: '#3B82F6', icon: FileText },
           { label: 'Avg Health Score', value: `${avgScore}/100`, color: getScoreColor(avgScore), icon: TrendingUp },
@@ -190,7 +190,7 @@ export default function ReportsPage() {
                 )}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1E293B]">
+            <tbody className="divide-y divide-[#F1F5F9]">
               <AnimatePresence>
                 {reports.map((report, i) => (
                   <motion.tr
@@ -198,12 +198,12 @@ export default function ReportsPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: i * 0.03 }}
-                    className="hover:bg-[rgba(255,255,255,0.02)] transition-colors"
+                    className="hover:bg-[#F8FAFC] transition-colors"
                   >
                     <td className="py-3 pr-4">
                       <div className="flex items-center gap-2">
                         <Calendar size={13} className="text-[#64748B]" />
-                        <span className="text-[13px] font-semibold text-[#E2E8F0]">
+                        <span className="text-[13px] font-semibold text-[#0F172A]">
                           {formatDate(report.date)}
                         </span>
                       </div>

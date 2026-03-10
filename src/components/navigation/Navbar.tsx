@@ -130,7 +130,7 @@ export function Navbar() {
         <div className="relative">
           <button
             onClick={markAllRead}
-            className="relative flex items-center justify-center w-9 h-9 rounded-lg border transition-all duration-150"
+            className="navIconBtn relative w-9 h-9"
             style={{
               background: unreadCount > 0 ? 'rgba(239,68,68,0.08)' : '#F8FAFC',
               border: unreadCount > 0 ? '1px solid rgba(239,68,68,0.22)' : '1px solid #E2E8F0',
@@ -158,13 +158,13 @@ export function Navbar() {
         </div>
 
         {/* User Avatar */}
-        <div
-          className="flex items-center justify-center w-9 h-9 rounded-lg text-white text-[12px] font-bold"
-          style={{ background: 'linear-gradient(120deg,#2563EB,#3B82F6)', cursor: 'pointer' }}
+        <button
+          className="navIconBtn w-9 h-9 text-white text-[12px] font-bold"
+          style={{ background: 'linear-gradient(120deg,#2563EB,#3B82F6)', border: 'none' }}
           aria-label="User menu"
         >
           A
-        </div>
+        </button>
       </div>
     </header>
   );

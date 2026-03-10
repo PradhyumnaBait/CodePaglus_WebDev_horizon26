@@ -118,7 +118,7 @@ export function AlertCard({ alert, compact = false, onDismiss, onResolve, delay 
             <div className="flex items-center gap-2 mt-2.5">
               {alert.suggested_action && (
                 <button
-                  className="flex items-center gap-1 text-[11px] font-600 px-2 py-1 rounded-lg transition-opacity hover:opacity-80"
+                  className="flex items-center gap-1 text-[11px] font-600 px-2 py-1 rounded-lg transition-all hover:opacity-90 active:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1"
                   style={{ color: cfg.dot, backgroundColor: `${cfg.dot}18` }}
                 >
                   <ExternalLink size={10} />
@@ -128,7 +128,7 @@ export function AlertCard({ alert, compact = false, onDismiss, onResolve, delay 
               {onResolve && alert.status !== 'resolved' && (
                 <button
                   onClick={() => onResolve(alert.id ?? alert.alert_id ?? '')}
-                  className="flex items-center gap-1 text-[11px] font-600 px-2 py-1 rounded-lg text-[#10B981] bg-[rgba(16,185,129,0.1)] hover:bg-[rgba(16,185,129,0.18)] transition-colors"
+                  className="flex items-center gap-1 text-[11px] font-600 px-2 py-1 rounded-lg text-[#10B981] bg-[rgba(16,185,129,0.1)] hover:bg-[rgba(16,185,129,0.18)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgba(16,185,129,0.5)] focus-visible:outline-offset-1"
                 >
                   <CheckCheck size={10} />
                   Resolve
@@ -137,7 +137,7 @@ export function AlertCard({ alert, compact = false, onDismiss, onResolve, delay 
               {onDismiss && (
                 <button
                   onClick={() => onDismiss(alert.id ?? alert.alert_id ?? '')}
-                  className="ml-auto flex items-center justify-center w-6 h-6 rounded-lg text-[#475569] hover:text-[#94A3B8] hover:bg-[#334155] transition-colors"
+                  className="ml-auto flex items-center justify-center w-6 h-6 rounded-lg text-[#94A3B8] hover:text-[#EF4444] hover:bg-[rgba(239,68,68,0.08)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[rgba(239,68,68,0.4)] focus-visible:outline-offset-1"
                 >
                   <X size={12} />
                 </button>

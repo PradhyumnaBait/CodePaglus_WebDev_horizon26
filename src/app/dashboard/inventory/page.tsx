@@ -161,7 +161,7 @@ export default function InventoryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name or SKU..."
-              className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#FFFFFF] border border-[#E2E8F0] text-[13px] text-[#0F172A] placeholder:text-[#475569] outline-none focus:border-[#3B82F6] transition-colors"
+              className="inputField pl-9 text-[13px]"
             />
           </div>
           <div className="flex gap-1.5 flex-wrap">
@@ -169,11 +169,7 @@ export default function InventoryPage() {
               <button
                 key={cat}
                 onClick={() => setFilterCategory(cat)}
-                className={`text-[11px] font-semibold uppercase px-3 py-1.5 rounded-lg transition-colors ${
-                  filterCategory === cat
-                    ? 'bg-[#3B82F6] text-white'
-                    : 'text-[#64748B] bg-[#FFFFFF] hover:text-[#0F172A] border border-[#E2E8F0]'
-                }`}
+                className={`filterChip ${filterCategory === cat ? 'active' : ''}`}
               >
                 {cat}
               </button>
@@ -183,7 +179,7 @@ export default function InventoryPage() {
       </DashboardCard>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {[
           { label: 'Total Products', value: products.length, color: '#3B82F6' },
           { label: 'In Stock', value: products.filter((p) => p.status === 'ok').length, color: '#10B981' },
@@ -219,7 +215,7 @@ export default function InventoryPage() {
                 )}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#1E293B]">
+            <tbody className="divide-y divide-[#F1F5F9]">
               <AnimatePresence>
                 {filteredProducts.map((product, i) => {
                   const s = STOCK_STATUS[product.status];
@@ -230,19 +226,19 @@ export default function InventoryPage() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ delay: i * 0.03 }}
-                      className="hover:bg-[rgba(255,255,255,0.02)] transition-colors"
+                      className="hover:bg-[#F8FAFC] transition-colors"
                     >
                       <td className="py-3 pr-4">
-                        <p className="text-[13px] font-semibold text-[#E2E8F0]">{product.name}</p>
+                        <p className="text-[13px] font-semibold text-[#0F172A]">{product.name}</p>
                       </td>
                       <td className="py-3 pr-4 text-[12px] text-[#64748B] font-mono">
                         {product.sku}
                       </td>
-                      <td className="py-3 pr-4 text-[12px] text-[#94A3B8]">{product.category}</td>
+                      <td className="py-3 pr-4 text-[12px] text-[#64748B]">{product.category}</td>
                       <td className="py-3 pr-4 text-[14px] font-bold text-[#0F172A] tabular-nums">
                         {product.stock}
                       </td>
-                      <td className="py-3 pr-4 text-[13px] text-[#E2E8F0] tabular-nums">
+                      <td className="py-3 pr-4 text-[13px] text-[#334155] tabular-nums">
                         ₹{product.price.toLocaleString('en-IN')}
                       </td>
                       <td className="py-3 pr-4">

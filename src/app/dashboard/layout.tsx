@@ -25,8 +25,9 @@ export default function DashboardLayout({
         {/* Simulator — active in all dashboard pages */}
         <SimulatorProvider enabled scenario="normal">
           {/* Scrollable Page Content */}
-          <main className="flex-1 overflow-y-auto p-6">
-            <div className="max-w-[1400px] mx-auto">
+          <main className="flex-1 overflow-y-auto" style={{ padding: 'clamp(20px, 3vw, 28px) clamp(20px, 3vw, 32px)' }}>
+            {/* restored design‑spec max width (1280px) – theme update had bumped this to 1440 */}
+            <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 0 }}>
               {children}
             </div>
           </main>
@@ -35,3 +36,4 @@ export default function DashboardLayout({
     </div>
   );
 }
+
