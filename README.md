@@ -1,4 +1,4 @@
-# OpsPulse
+# CodePaglus_WebDev_horizon26
 
 ### Real-Time Operational Stress Intelligence for Small Businesses
 
