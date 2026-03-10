@@ -81,7 +81,7 @@ export default function DashboardPage() {
       {/* ---- Page Header ---- */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-page-title text-[#F1F5F9]">Dashboard</h1>
+          <h1 className="text-page-title text-[#0F172A]">Dashboard</h1>
           <p className="text-[12px] text-[#64748B] mt-1 flex items-center gap-1.5">
             <Clock size={11} />
             Real-time business health · STORE-01
@@ -182,7 +182,7 @@ export default function DashboardPage() {
           <DashboardCard className="col-span-12" delay={0.2}>
             <div className="flex items-center gap-2 mb-3">
               <BarChart3 size={14} className="text-[#3B82F6]" />
-              <span className="text-[13px] font-600 text-[#F1F5F9]">Stress Score History</span>
+              <span className="text-[13px] font-600 text-[#0F172A]">Stress Score History</span>
               <span
                 className="ml-auto text-[13px] font-700"
                 style={{ color: scoreColor }}
@@ -262,7 +262,7 @@ export default function DashboardPage() {
         <DashboardCard className="col-span-12 lg:col-span-7" delay={0.32}>
           <div className="flex items-center gap-2 mb-3">
             <DollarSign size={14} className="text-[#22C55E]" />
-            <span className="text-[13px] font-600 text-[#F1F5F9]">Cash Flow — Last 7 Days</span>
+            <span className="text-[13px] font-600 text-[#0F172A]">Cash Flow — Last 7 Days</span>
           </div>
           <CashFlowChart />
         </DashboardCard>
@@ -270,7 +270,7 @@ export default function DashboardPage() {
         <DashboardCard className="col-span-12 lg:col-span-5" delay={0.34}>
           <div className="flex items-center gap-2 mb-3">
             <CalendarDays size={14} className="text-[#3B82F6]" />
-            <span className="text-[13px] font-600 text-[#F1F5F9]">Monthly Orders</span>
+            <span className="text-[13px] font-600 text-[#0F172A]">Monthly Orders</span>
           </div>
           <MonthlyOrdersChart />
         </DashboardCard>
@@ -291,7 +291,7 @@ export default function DashboardPage() {
                 <Icon size={13} style={{ color: stat.color }} />
                 <span className="text-[11px] text-[#64748B] font-500 uppercase tracking-wider">{stat.label}</span>
               </div>
-              <p className="text-[20px] font-700 text-[#F1F5F9]">{stat.value}</p>
+              <p className="text-[20px] font-700 text-[#0F172A]">{stat.value}</p>
             </DashboardCard>
           );
         })}
