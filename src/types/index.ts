@@ -6,7 +6,7 @@
 // Enums & Unions
 // --------------------------------------------------------
 export type AlertSeverity    = 'crisis' | 'anomaly' | 'warning' | 'opportunity' | 'info';
-export type AlertStatus      = 'active' | 'open' | 'assigned' | 'in_progress' | 'resolved';
+export type AlertStatus      = 'active' | 'open' | 'assigned' | 'in_progress' | 'resolved' | 'escalated';
 export type MetricType       = 'sales' | 'inventory' | 'support';
 export type TrendDirection   = 'up' | 'down' | 'stable';
 export type ConnectionStatus = 'connected' | 'connecting' | 'disconnected' | 'error';
@@ -269,13 +269,21 @@ export interface SocketSlice {
 // --------------------------------------------------------
 // API Response Wrappers
 // --------------------------------------------------------
-export interface ApiResponse<T> {
-  data:    T;
-  success: boolean;
+export interface ApiSuccess<T = unknown> {
+  success: true;
+  data: T;
   message?: string;
 }
 
-export interface PaginatedResponse<T> extends ApiResponse<T[]> {
+export interface ApiError {
+  success: false;
+  error: string;
+}
+
+export type ApiResponse<T = unknown> = ApiSuccess<T> | ApiError | { data: T; success: boolean; message?: string; error?: string; }; // Unified frontend/backend
+
+
+export interface PaginatedResponse<T> extends ApiSuccess<T[]> {
   total: number;
   page:  number;
   limit: number;
@@ -295,6 +303,7 @@ export interface CardProps {
   title?:     string;
   icon?:      React.ReactNode;
   className?: string;
+  style?:     React.CSSProperties;
   children:   React.ReactNode;
   action?:    React.ReactNode;
 }
@@ -316,4 +325,83 @@ export interface AlertCardProps {
   onAck?:     (id: string) => void;
   onResolve?: (id: string) => void;
   className?: string;
+}
+
+import { ObjectId } from "mongodb";
+
+// ─── Backend Models ──────────────────────────────────────────────────────────
+export interface IUser {
+  _id?: ObjectId | string;
+  fullName: string;
+  email: string;
+  mobile: string;
+  passwordHash: string;
+  businessId: ObjectId | string;
+  role: "admin" | "employee";
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface IBusiness {
+  _id?: ObjectId | string;
+  name: string;
+  type: "ecommerce" | "retail" | "restaurant" | "saas" | "other";
+  ownerUserId: ObjectId | string;
+  createdAt: Date;
+}
+
+export interface ICashFlowEntry {
+  date: string;
+  revenue: number;
+  expenses: number;
+}
+
+export interface IReport {
+  _id?: ObjectId | string;
+  businessId: ObjectId | string;
+  reportDate: Date;
+  healthScore: number;
+  salesSummary: {
+    totalRevenue: number;
+    totalOrders: number;
+  };
+  inventorySummary: {
+    totalItems: number;
+    lowStockItems: number;
+  };
+  cashFlowSummary: ICashFlowEntry[];
+  alerts: string[];
+  pdfPath: string;
+  createdAt: Date;
+}
+
+export interface IOTP {
+  _id?: ObjectId | string;
+  userId: ObjectId | string;
+  otpCode: string;
+  expiresAt: Date;
+  used: boolean;
+  createdAt: Date;
+}
+
+export interface JWTPayload {
+  userId: string;
+  businessId: string;
+  role: "admin" | "employee";
+  email: string;
+}
+
+// Extending InventoryItem for backend compatibility
+export interface IInventory {
+  _id?: ObjectId | string;
+  businessId: ObjectId | string;
+  productName: string;
+  sku: string;
+  stockQuantity: number;
+  purchasePrice: number;
+  salePrice: number;
+  category: string;
+  lowStockAlert: number;
+  createdAt: Date;
+  updatedAt: Date;
 }

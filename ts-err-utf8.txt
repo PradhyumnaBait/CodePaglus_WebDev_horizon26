@@ -1,0 +1,2 @@
+﻿src/app/dashboard/ai-assistant/page.tsx(137,9): error TS2322: Type '{ children: Element[]; variant: "flat"; className: string; style: any; }' is not assignable to type 'IntrinsicAttributes & DashboardCardProps'.
+  Property 'style' does not exist on type 'IntrinsicAttributes & DashboardCardProps'.

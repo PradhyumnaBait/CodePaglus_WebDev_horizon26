@@ -51,7 +51,7 @@ apiClient.interceptors.response.use(
 // --------------------------------------------------------
 export const fetchStressScore = async (storeId: string): Promise<StressScore> => {
   const res = await apiClient.get<ApiResponse<StressScore>>(`/stores/${storeId}/score`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 // --------------------------------------------------------
@@ -59,22 +59,22 @@ export const fetchStressScore = async (storeId: string): Promise<StressScore> =>
 // --------------------------------------------------------
 export const fetchAlerts = async (storeId: string): Promise<Alert[]> => {
   const res = await apiClient.get<ApiResponse<Alert[]>>(`/stores/${storeId}/alerts`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const acknowledgeAlert = async (alertId: string): Promise<Alert> => {
   const res = await apiClient.patch<ApiResponse<Alert>>(`/alerts/${alertId}/acknowledge`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const resolveAlert = async (alertId: string): Promise<Alert> => {
   const res = await apiClient.patch<ApiResponse<Alert>>(`/alerts/${alertId}/resolve`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const assignAlert = async (alertId: string, assignee: string): Promise<Alert> => {
   const res = await apiClient.patch<ApiResponse<Alert>>(`/alerts/${alertId}/assign`, { assignee });
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 // --------------------------------------------------------
@@ -82,17 +82,17 @@ export const assignAlert = async (alertId: string, assignee: string): Promise<Al
 // --------------------------------------------------------
 export const fetchSalesMetric = async (storeId: string): Promise<SalesMetric> => {
   const res = await apiClient.get<ApiResponse<SalesMetric>>(`/stores/${storeId}/metrics/sales`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const fetchInventoryMetric = async (storeId: string): Promise<InventoryMetric> => {
   const res = await apiClient.get<ApiResponse<InventoryMetric>>(`/stores/${storeId}/metrics/inventory`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const fetchSupportMetric = async (storeId: string): Promise<SupportMetric> => {
   const res = await apiClient.get<ApiResponse<SupportMetric>>(`/stores/${storeId}/metrics/support`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 // --------------------------------------------------------
@@ -100,7 +100,7 @@ export const fetchSupportMetric = async (storeId: string): Promise<SupportMetric
 // --------------------------------------------------------
 export const fetchActiveIncident = async (storeId: string): Promise<WarRoomIncident | null> => {
   const res = await apiClient.get<ApiResponse<WarRoomIncident | null>>(`/stores/${storeId}/war-room`);
-  return res.data.data;
+  return (res.data as any).data;
 };
 
 export const completeWarRoomAction = async (incidentId: string, actionId: string): Promise<void> => {
@@ -121,5 +121,5 @@ export const fetchEventFeed = async (
   const res = await apiClient.get<PaginatedResponse<EventFeedItem>>(
     `/stores/${storeId}/events?limit=${limit}`,
   );
-  return res.data.data;
+  return (res.data as any).data;
 };

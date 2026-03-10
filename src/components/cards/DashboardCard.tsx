@@ -12,6 +12,7 @@ import type { ReactNode } from 'react';
 interface DashboardCardProps {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   variant?: 'default' | 'flat' | 'glow';
   glowColor?: string;
   /** If set, animates in with a stagger delay */
@@ -22,6 +23,7 @@ interface DashboardCardProps {
 export function DashboardCard({
   children,
   className,
+  style,
   variant = 'default',
   glowColor,
   delay = 0,
@@ -36,14 +38,17 @@ export function DashboardCard({
     className,
   );
 
-  const style = glowColor
-    ? { boxShadow: `0 0 28px ${glowColor}18, 0 2px 8px rgba(0,0,0,0.06)` }
-    : undefined;
+  const computedStyle: React.CSSProperties = {
+    ...style,
+    ...(glowColor
+      ? { boxShadow: `0 0 28px ${glowColor}18, 0 2px 8px rgba(0,0,0,0.06)` }
+      : {}),
+  };
 
   return (
     <motion.div
       className={base}
-      style={style}
+      style={computedStyle}
       initial={{ opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.38, delay, ease: [0.16, 1, 0.3, 1] }}

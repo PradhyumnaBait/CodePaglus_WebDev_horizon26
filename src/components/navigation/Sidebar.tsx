@@ -119,9 +119,10 @@ export function Sidebar() {
         </p>
 
         {NAV_ITEMS.map((item) => {
+          const safePathname = pathname || '';
           const isActive = item.href === '/dashboard'
-            ? pathname === '/dashboard'
-            : pathname === item.href || pathname.startsWith(item.href + '/');
+            ? safePathname === '/dashboard'
+            : safePathname === item.href || safePathname.startsWith(item.href + '/');
           const Icon = item.icon;
           const badge = item.label === 'Alerts' ? unreadCount : undefined;
           const isWarRoom = item.warRoom && isWarRoomActive;

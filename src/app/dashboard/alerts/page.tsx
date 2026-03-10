@@ -146,8 +146,8 @@ export default function AlertsPage() {
       {/* Main Content */}
       <ActiveAlertsList
         alerts={alerts.length > 0 ? alerts : fetchedAlerts}
-        onResolveAlert={(alertId) => resolveAlertMutation.mutateAsync(alertId)}
-        onEscalateAlert={(alertId) => escalateAlertMutation.mutateAsync(alertId)}
+        onResolveAlert={async (alertId) => { await resolveAlertMutation.mutateAsync(alertId); }}
+        onEscalateAlert={async (alertId) => { await escalateAlertMutation.mutateAsync(alertId); }}
         onOpenWarRoom={handleOpenWarRoom}
       />
 

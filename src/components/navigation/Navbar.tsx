@@ -38,7 +38,7 @@ export function Navbar() {
   const isWarRoomActive = useDashboardStore((s) => s.isWarRoomActive);
   const lastUpdated = useDashboardStore((s) => s.lastUpdated);
 
-  const breadcrumbs = ROUTE_LABELS[pathname] ?? ['Dashboard'];
+  const breadcrumbs = ROUTE_LABELS[pathname || ''] ?? ['Dashboard'];
 
   return (
     <header
@@ -69,7 +69,7 @@ export function Navbar() {
 
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5">
-          {breadcrumbs.map((crumb, i) => (
+          {breadcrumbs.map((crumb: string, i: number) => (
             <span key={crumb} className="flex items-center gap-1.5">
               {i > 0 && <ChevronRight size={13} className="text-[#CBD5E1]" />}
               <span

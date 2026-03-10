@@ -1,0 +1,40 @@
+﻿.next/dev/types/validator.ts(42,39): error TS2307: Cannot find module '../../../src/app/auth/inventory-setup/page.js' or its corresponding type declarations.
+src/app/dashboard/ai-assistant/page.tsx(137,9): error TS2322: Type '{ children: Element[]; variant: "flat"; className: string; style: any; }' is not assignable to type 'IntrinsicAttributes & DashboardCardProps'.
+  Property 'style' does not exist on type 'IntrinsicAttributes & DashboardCardProps'.
+src/app/dashboard/alerts/page.tsx(149,38): error TS2322: Type 'Promise<Alert>' is not assignable to type 'Promise<void>'.
+  Type 'Alert' is not assignable to type 'void'.
+src/app/dashboard/alerts/page.tsx(150,39): error TS2322: Type 'Promise<Alert>' is not assignable to type 'Promise<void>'.
+  Type 'Alert' is not assignable to type 'void'.
+src/components/alerts/AlertCard.tsx(93,78): error TS2367: This comparison appears to be unintentional because the types '"active" | "open" | "assigned" | "in_progress"' and '"escalated"' have no overlap.
+src/components/alerts/AlertCard.tsx(96,121): error TS2367: This comparison appears to be unintentional because the types '"active" | "open" | "assigned" | "in_progress"' and '"escalated"' have no overlap.
+src/components/alerts/AlertCard.tsx(148,14): error TS2367: This comparison appears to be unintentional because the types '"open" | "assigned" | "in_progress" | "resolved"' and '"escalated"' have no overlap.
+src/components/navigation/Navbar.tsx(41,36): error TS2538: Type 'null' cannot be used as an index type.
+src/components/navigation/Navbar.tsx(72,29): error TS7006: Parameter 'crumb' implicitly has an 'any' type.
+src/components/navigation/Navbar.tsx(72,36): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/components/navigation/Sidebar.tsx(124,41): error TS18047: 'pathname' is possibly 'null'.
+src/lib/api/client.ts(54,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<StressScore>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(62,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<Alert[]>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(67,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<Alert>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(72,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<Alert>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(77,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<Alert>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(85,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<SalesMetric>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(90,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<InventoryMetric>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(95,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<SupportMetric>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/lib/api/client.ts(103,19): error TS2339: Property 'data' does not exist on type 'ApiResponse<WarRoomIncident | null>'.
+  Property 'data' does not exist on type 'ApiError'.
+src/utils/jwt.ts(8,14): error TS2769: No overload matches this call.
+  Overload 1 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: null, options?: (SignOptions & { algorithm: "none"; }) | undefined): string', gave the following error.
+    Argument of type 'string' is not assignable to parameter of type 'null'.
+  Overload 2 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, options?: SignOptions | undefined): string', gave the following error.
+    Type 'string' is not assignable to type 'number | StringValue | undefined'.
+  Overload 3 of 5, '(payload: string | object | Buffer<ArrayBufferLike>, secretOrPrivateKey: Buffer<ArrayBufferLike> | Secret | PrivateKeyInput | JsonWebKeyInput, callback: SignCallback): void', gave the following error.
+    Object literal may only specify known properties, and 'expiresIn' does not exist in type 'SignCallback'.
+src/utils/pdfGenerator.ts(347,31): error TS2749: 'PDFDocument' refers to a value, but is being used as a type here. Did you mean 'typeof PDFDocument'?

@@ -344,7 +344,7 @@ export async function generateReportPDF(
     y += 68;
 
     // ── FOOTER ────────────────────────────────────────────────────────────────
-    const pageCount = (doc as PDFDocument & { _pageBuffer?: unknown[] })
+    const pageCount = (doc as any & { _pageBuffer?: unknown[] })
       ._pageBuffer?.length || 1;
     doc
       .save()
