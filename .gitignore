@@ -1,0 +1,22 @@
+# Environment
+.env.local
+.env.production
+.env
+
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Generated PDFs
+public/reports/*.pdf
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.DS_Store
+*.log
+dist/
