@@ -1,7 +1,14 @@
 'use client';
 
+// ============================================================
+// OpsPulse — Sidebar Navigation
+// CHANGE 3: LogOut button now signs the user out and redirects
+//           to /auth/login, clearing all session data.
+// CHANGE 2: Shows stored user role label in the user row.
+// CHANGE 1: Added smooth hover/focus transitions and improved spacing.
+// ============================================================
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard,
   Settings2,
@@ -20,6 +27,8 @@ import { cn } from '@/lib/utils';
 import { useAlertsStore } from '@/store/alertsStore';
 import { useSocketStore } from '@/store/socketStore';
 import { useDashboardStore } from '@/store/dashboardStore';
+// CHANGE 3 & 2: Import signOut and getRoleLabel from auth utility
+import { signOut, getRoleLabel } from '@/lib/auth';
 
 interface NavItem {
   label: string;
@@ -40,9 +49,20 @@ const NAV_ITEMS: NavItem[] = [
 
 export function Sidebar() {
   const pathname = usePathname();
+  // CHANGE 3: Need router to redirect after sign out
+  const router = useRouter();
   const unreadCount = useAlertsStore((s) => s.unreadCount);
   const socketStatus = useSocketStore((s) => s.status);
   const isWarRoomActive = useDashboardStore((s) => s.isWarRoomActive);
+
+  // CHANGE 2: Read the stored role label to display below the user name
+  const roleLabel = getRoleLabel();
+
+  // CHANGE 3: Sign out handler — clears session then redirects to login
+  const handleSignOut = () => {
+    signOut(); // Clears all ops_* sessionStorage keys
+    router.push('/auth/login');
+  };
 
   return (
     <aside
@@ -56,6 +76,7 @@ export function Sidebar() {
           style={{ background: 'linear-gradient(120deg,#2563EB,#3B82F6)', boxShadow: '0 4px 16px rgba(37,99,235,0.25)' }}
         >
           <Activity size={18} className="text-white" />
+          {/* CHANGE 1: Live status dot with pulse animation */}
           <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white animate-pulse-glow" style={{ background: '#22C55E' }} />
         </div>
         <div>
@@ -69,7 +90,8 @@ export function Sidebar() {
       </div>
 
       {/* ---- Store Info ---- */}
-      <div className="mx-3 mt-3 mb-1 px-3 py-2.5 rounded-lg flex items-center gap-2.5"
+      {/* CHANGE 1: Improved margins for breathing room */}
+      <div className="mx-3 mt-4 mb-1 px-3 py-2.5 rounded-lg flex items-center gap-2.5"
         style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
         <Store size={14} className="text-[#64748B] flex-shrink-0" />
         <div className="min-w-0">
@@ -86,7 +108,8 @@ export function Sidebar() {
       </div>
 
       {/* ---- Navigation ---- */}
-      <nav className="flex-1 px-2 py-3 overflow-y-auto" style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      {/* CHANGE 1: Consistent gap between nav items */}
+      <nav className="flex-1 px-2 py-4 overflow-y-auto" style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
         <p className="text-[10px] text-[#94A3B8] font-semibold uppercase tracking-widest px-3 pb-2 pt-1">
           Navigation
         </p>
@@ -102,6 +125,7 @@ export function Sidebar() {
           return (
             <Link key={item.href} href={item.href} style={{ textDecoration: 'none' }}>
               <div
+                // CHANGE 1: navItem has built-in hover/active transition from globals.css
                 className={cn('navItem', isActive && 'active', isWarRoom && !isActive && 'animate-crisis-pulse')}
                 style={isWarRoom && !isActive ? { color: '#EF4444', border: '1px solid rgba(239,68,68,0.2)', background: 'transparent' } : {}}
               >
@@ -133,7 +157,8 @@ export function Sidebar() {
       </nav>
 
       {/* ---- Bottom User Section ---- */}
-      <div className="p-3" style={{ borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {/* CHANGE 1: Consistent padding and gap */}
+      <div className="p-3" style={{ borderTop: '1px solid #E2E8F0', display: 'flex', flexDirection: 'column', gap: 8 }}>
         {/* Status pill */}
         <div className="flex items-center gap-2 px-3 py-2 rounded-lg"
           style={{ background: '#F8FAFC', border: '1px solid #E2E8F0' }}>
@@ -146,7 +171,8 @@ export function Sidebar() {
           </span>
         </div>
 
-        {/* User row */}
+        {/* CHANGE 3: User row — LogOut icon wired to handleSignOut */}
+        {/* CHANGE 2: Role label displayed under user name */}
         <div className="navItem" style={{ cursor: 'pointer' }}>
           <div className="flex items-center justify-center w-7 h-7 rounded-full text-white text-[11px] font-bold flex-shrink-0"
             style={{ background: 'linear-gradient(120deg,#2563EB,#3B82F6)' }}>
@@ -154,9 +180,18 @@ export function Sidebar() {
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-[12px] text-[#0F172A] font-medium truncate">Admin User</p>
-            <p className="text-[10px] text-[#94A3B8] truncate">Owner</p>
+            {/* CHANGE 2: Display stored role label */}
+            <p className="text-[10px] text-[#94A3B8] truncate">{roleLabel}</p>
           </div>
-          <LogOut size={13} className="text-[#CBD5E1] flex-shrink-0" />
+          {/* CHANGE 3: LogOut button with proper handler, hover state, and accessibility */}
+          <button
+            onClick={handleSignOut}
+            title="Sign out"
+            aria-label="Sign out"
+            className="flex items-center justify-center w-7 h-7 rounded-lg transition-all duration-150 hover:bg-red-50 hover:text-[#EF4444] text-[#CBD5E1] flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-[#EF4444]/30"
+          >
+            <LogOut size={13} />
+          </button>
         </div>
       </div>
     </aside>
