@@ -169,7 +169,7 @@ export default function WarRoomPage() {
             {score >= 75 ? '🔴 CRITICAL' : score >= 50 ? '🟡 ELEVATED' : '🟢 MODERATE'}
           </div>
           <Link href="/dashboard">
-            <button className="text-[12px] text-[#64748B] hover:text-[#F1F5F9] px-3 py-1.5 rounded-lg border border-[#334155] transition-colors">
+            <button className="text-[12px] text-[#64748B] hover:text-[#0F172A] px-3 py-1.5 rounded-lg border border-[#E2E8F0] transition-colors">
               ← Back
             </button>
           </Link>
@@ -241,10 +241,10 @@ export default function WarRoomPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-[12px] font-600 text-[#F1F5F9]">{cause.title}</span>
+                        <span className="text-[12px] font-600 text-[#0F172A]">{cause.title}</span>
                         <div className="ml-auto flex-shrink-0">
                           <div className="flex items-center gap-1">
-                            <div className="w-12 h-1.5 rounded-full bg-[#0F172A] overflow-hidden">
+                            <div className="w-12 h-1.5 rounded-full bg-[#FFFFFF] overflow-hidden">
                               <div
                                 className="h-full rounded-full"
                                 style={{ width: `${cause.probability}%`, backgroundColor: cfg.color }}
@@ -286,7 +286,7 @@ export default function WarRoomPage() {
                     onClick={() => !done && executeAction(action.id)}
                     className={`text-left p-3 rounded-xl border transition-all duration-150 ${
                       done
-                        ? 'opacity-50 border-[#1E293B] bg-[#0F172A] cursor-default'
+                        ? 'opacity-50 border-[#E2E8F0] bg-[#FFFFFF] cursor-default'
                         : 'cursor-pointer hover:opacity-90'
                     }`}
                     style={!done ? {
@@ -306,7 +306,7 @@ export default function WarRoomPage() {
                         {action.category}
                       </span>
                     </div>
-                    <p className="text-[11px] text-[#F1F5F9] font-500 leading-snug">
+                    <p className="text-[11px] text-[#0F172A] font-500 leading-snug">
                       {done ? '✓ ' : ''}{action.title}
                     </p>
                   </motion.button>
@@ -322,7 +322,7 @@ export default function WarRoomPage() {
               value={incidentSummary}
               onChange={(e) => setIncidentSummary(e.target.value)}
               placeholder="Describe the incident, actions taken, and resolution..."
-              className="w-full h-24 bg-[#0F172A] border border-[#334155] rounded-xl px-3 py-2.5 text-[12px] text-[#E2E8F0] placeholder:text-[#475569] resize-none focus:outline-none focus:border-[#3B82F6] transition-colors"
+              className="w-full h-24 bg-[#FFFFFF] border border-[#E2E8F0] rounded-xl px-3 py-2.5 text-[12px] text-[#E2E8F0] placeholder:text-[#475569] resize-none focus:outline-none focus:border-[#3B82F6] transition-colors"
             />
             <div className="flex items-center justify-between mt-2">
               <span className="text-[10px] text-[#475569]">{incidentSummary.length} chars</span>
@@ -340,7 +340,7 @@ export default function WarRoomPage() {
           <DashboardCard delay={0.15}>
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2 h-2 rounded-full bg-[#EF4444] animate-pulse" />
-              <span className="text-[13px] font-600 text-[#F1F5F9]">Crisis Alerts</span>
+              <span className="text-[13px] font-600 text-[#0F172A]">Crisis Alerts</span>
               <span className="ml-auto text-[10px] bg-[rgba(239,68,68,0.15)] text-[#FCA5A5] px-1.5 py-0.5 rounded-full font-700">
                 {crisisAlerts.length}
               </span>
@@ -389,7 +389,7 @@ export default function WarRoomPage() {
                   <div key={item.label} className="flex items-center gap-2 text-[12px]">
                     <Icon size={12} className="text-[#64748B]" />
                     <span className="text-[#64748B]">{item.label}</span>
-                    <span className="ml-auto text-[#F1F5F9] font-600">{item.value}</span>
+                    <span className="ml-auto text-[#0F172A] font-600">{item.value}</span>
                   </div>
                 );
               })}

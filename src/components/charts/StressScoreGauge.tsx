@@ -163,7 +163,7 @@ export function StressScoreGauge({
                 {item.score}
               </span>
               <span className="text-[10px] text-[#64748B]">{item.label}</span>
-              <div className="mt-1.5 h-1 rounded-full bg-[#1E293B] overflow-hidden">
+              <div className="mt-1.5 h-1 rounded-full bg-[#F8FAFC] overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${item.score}%` }}

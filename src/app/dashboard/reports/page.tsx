@@ -117,7 +117,7 @@ export default function ReportsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-page-title text-[#F1F5F9]">Reports</h1>
+          <h1 className="text-page-title text-[#0F172A]">Reports</h1>
           <p className="text-[12px] text-[#64748B] mt-1 flex items-center gap-1.5">
             <FileText size={11} />
             Generate and download business health reports
@@ -160,7 +160,7 @@ export default function ReportsPage() {
                   {stat.label}
                 </p>
               </div>
-              <p className="text-[20px] font-bold text-[#F1F5F9]">{stat.value}</p>
+              <p className="text-[20px] font-bold text-[#0F172A]">{stat.value}</p>
             </DashboardCard>
           );
         })}
@@ -170,14 +170,14 @@ export default function ReportsPage() {
       <DashboardCard delay={0.15}>
         <div className="flex items-center gap-2 mb-4">
           <FileText size={14} className="text-[#6366F1]" />
-          <span className="text-[13px] font-semibold text-[#F1F5F9]">Report History</span>
+          <span className="text-[13px] font-semibold text-[#0F172A]">Report History</span>
           <span className="ml-auto text-[11px] text-[#64748B]">{reports.length} reports</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-[#1E293B]">
+              <tr className="border-b border-[#E2E8F0]">
                 {['Report Date', 'Health Score', 'Status', 'Generated At', 'Action'].map(
                   (col) => (
                     <th

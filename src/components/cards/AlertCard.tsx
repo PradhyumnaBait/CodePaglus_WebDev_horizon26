@@ -100,7 +100,7 @@ export function AlertCard({ alert, compact = false, onDismiss, onResolve, delay 
 
           {/* Title */}
           <p className={cn(
-            'font-500 text-[#F1F5F9] leading-snug mt-0.5',
+            'font-500 text-[#0F172A] leading-snug mt-0.5',
             compact ? 'text-[12px]' : 'text-[13px]',
           )}>
             {alert.title}

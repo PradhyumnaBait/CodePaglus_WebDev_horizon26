@@ -120,7 +120,7 @@ export default function InventoryPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-page-title text-[#F1F5F9]">Inventory</h1>
+          <h1 className="text-page-title text-[#0F172A]">Inventory</h1>
           <p className="text-[12px] text-[#64748B] mt-1 flex items-center gap-1.5">
             <Package size={11} />
             Manage products and stock levels
@@ -161,7 +161,7 @@ export default function InventoryPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by name or SKU..."
-              className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#0F172A] border border-[#1E293B] text-[13px] text-[#F1F5F9] placeholder:text-[#475569] outline-none focus:border-[#3B82F6] transition-colors"
+              className="w-full pl-9 pr-4 py-2 rounded-lg bg-[#FFFFFF] border border-[#E2E8F0] text-[13px] text-[#0F172A] placeholder:text-[#475569] outline-none focus:border-[#3B82F6] transition-colors"
             />
           </div>
           <div className="flex gap-1.5 flex-wrap">
@@ -172,7 +172,7 @@ export default function InventoryPage() {
                 className={`text-[11px] font-semibold uppercase px-3 py-1.5 rounded-lg transition-colors ${
                   filterCategory === cat
                     ? 'bg-[#3B82F6] text-white'
-                    : 'text-[#64748B] bg-[#0F172A] hover:text-[#F1F5F9] border border-[#1E293B]'
+                    : 'text-[#64748B] bg-[#FFFFFF] hover:text-[#0F172A] border border-[#E2E8F0]'
                 }`}
               >
                 {cat}
@@ -194,7 +194,7 @@ export default function InventoryPage() {
             <p className="text-[10px] text-[#64748B] font-medium uppercase tracking-wider mb-1">
               {stat.label}
             </p>
-            <p className="text-[24px] font-bold text-[#F1F5F9]" style={{ color: stat.color }}>
+            <p className="text-[24px] font-bold text-[#0F172A]" style={{ color: stat.color }}>
               {stat.value}
             </p>
           </DashboardCard>
@@ -206,7 +206,7 @@ export default function InventoryPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-[#1E293B]">
+              <tr className="border-b border-[#E2E8F0]">
                 {['Product', 'SKU', 'Category', 'Stock', 'Price', 'Status', 'Actions'].map(
                   (col) => (
                     <th
@@ -239,7 +239,7 @@ export default function InventoryPage() {
                         {product.sku}
                       </td>
                       <td className="py-3 pr-4 text-[12px] text-[#94A3B8]">{product.category}</td>
-                      <td className="py-3 pr-4 text-[14px] font-bold text-[#F1F5F9] tabular-nums">
+                      <td className="py-3 pr-4 text-[14px] font-bold text-[#0F172A] tabular-nums">
                         {product.stock}
                       </td>
                       <td className="py-3 pr-4 text-[13px] text-[#E2E8F0] tabular-nums">
@@ -301,15 +301,15 @@ export default function InventoryPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[480px] bg-[#1E293B] border border-[#334155] rounded-2xl p-6"
+              className="w-full max-w-[480px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6"
             >
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-[18px] font-bold text-[#F1F5F9]">
+                <h3 className="text-[18px] font-bold text-[#0F172A]">
                   {editingId ? 'Update Product' : 'Add New Product'}
                 </h3>
                 <button
                   onClick={() => setModalOpen(false)}
-                  className="p-1 rounded-lg text-[#64748B] hover:text-[#F1F5F9] transition-colors"
+                  className="p-1 rounded-lg text-[#64748B] hover:text-[#0F172A] transition-colors"
                 >
                   <X size={18} />
                 </button>
@@ -326,8 +326,8 @@ export default function InventoryPage() {
                     value={form.name}
                     onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: undefined }); }}
                     placeholder="Enter product name"
-                    className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#F1F5F9] bg-[#0F172A] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
-                      errors.name ? 'border-[#EF4444]' : 'border-[#334155]'
+                    className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#0F172A] bg-[#FFFFFF] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
+                      errors.name ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                     }`}
                   />
                   {errors.name && <p className="text-[11px] text-[#EF4444] mt-1">{errors.name}</p>}
@@ -344,8 +344,8 @@ export default function InventoryPage() {
                       value={form.sku}
                       onChange={(e) => { setForm({ ...form, sku: e.target.value }); setErrors({ ...errors, sku: undefined }); }}
                       placeholder="SKU-XXXX"
-                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#F1F5F9] bg-[#0F172A] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
-                        errors.sku ? 'border-[#EF4444]' : 'border-[#334155]'
+                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#0F172A] bg-[#FFFFFF] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
+                        errors.sku ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                       }`}
                     />
                     {errors.sku && <p className="text-[11px] text-[#EF4444] mt-1">{errors.sku}</p>}
@@ -360,8 +360,8 @@ export default function InventoryPage() {
                       value={form.stock}
                       onChange={(e) => { setForm({ ...form, stock: e.target.value }); setErrors({ ...errors, stock: undefined }); }}
                       placeholder="0"
-                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#F1F5F9] bg-[#0F172A] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
-                        errors.stock ? 'border-[#EF4444]' : 'border-[#334155]'
+                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#0F172A] bg-[#FFFFFF] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
+                        errors.stock ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                       }`}
                     />
                     {errors.stock && <p className="text-[11px] text-[#EF4444] mt-1">{errors.stock}</p>}
@@ -381,8 +381,8 @@ export default function InventoryPage() {
                       value={form.price}
                       onChange={(e) => { setForm({ ...form, price: e.target.value }); setErrors({ ...errors, price: undefined }); }}
                       placeholder="0.00"
-                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#F1F5F9] bg-[#0F172A] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
-                        errors.price ? 'border-[#EF4444]' : 'border-[#334155]'
+                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#0F172A] bg-[#FFFFFF] border outline-none focus:border-[#3B82F6] transition-colors placeholder:text-[#475569] ${
+                        errors.price ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                       }`}
                     />
                     {errors.price && <p className="text-[11px] text-[#EF4444] mt-1">{errors.price}</p>}
@@ -394,8 +394,8 @@ export default function InventoryPage() {
                     <select
                       value={form.category}
                       onChange={(e) => { setForm({ ...form, category: e.target.value }); setErrors({ ...errors, category: undefined }); }}
-                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#F1F5F9] bg-[#0F172A] border outline-none focus:border-[#3B82F6] transition-colors appearance-none cursor-pointer ${
-                        errors.category ? 'border-[#EF4444]' : 'border-[#334155]'
+                      className={`w-full px-3 py-2.5 rounded-xl text-[13px] text-[#0F172A] bg-[#FFFFFF] border outline-none focus:border-[#3B82F6] transition-colors appearance-none cursor-pointer ${
+                        errors.category ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                       }`}
                     >
                       <option value="">Select</option>
@@ -412,7 +412,7 @@ export default function InventoryPage() {
               <div className="flex items-center justify-end gap-2 mt-6">
                 <button
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 rounded-xl border border-[#334155] text-[13px] font-medium text-[#94A3B8] hover:text-[#F1F5F9] hover:border-[#475569] transition-colors"
+                  className="px-4 py-2 rounded-xl border border-[#E2E8F0] text-[13px] font-medium text-[#94A3B8] hover:text-[#0F172A] hover:border-[#475569] transition-colors"
                 >
                   Cancel
                 </button>
@@ -449,19 +449,19 @@ export default function InventoryPage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-[360px] bg-[#1E293B] border border-[#334155] rounded-2xl p-6 text-center"
+              className="w-full max-w-[360px] bg-[#F8FAFC] border border-[#E2E8F0] rounded-2xl p-6 text-center"
             >
               <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[rgba(239,68,68,0.1)] mx-auto mb-4">
                 <Trash2 size={20} className="text-[#EF4444]" />
               </div>
-              <h3 className="text-[16px] font-bold text-[#F1F5F9] mb-2">Delete Product</h3>
+              <h3 className="text-[16px] font-bold text-[#0F172A] mb-2">Delete Product</h3>
               <p className="text-[13px] text-[#94A3B8] mb-5">
                 This action cannot be undone. Are you sure?
               </p>
               <div className="flex items-center justify-center gap-2">
                 <button
                   onClick={() => setDeleteConfirm(null)}
-                  className="px-4 py-2 rounded-xl border border-[#334155] text-[13px] font-medium text-[#94A3B8] hover:text-[#F1F5F9] transition-colors"
+                  className="px-4 py-2 rounded-xl border border-[#E2E8F0] text-[13px] font-medium text-[#94A3B8] hover:text-[#0F172A] transition-colors"
                 >
                   Cancel
                 </button>

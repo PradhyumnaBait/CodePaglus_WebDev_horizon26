@@ -85,7 +85,7 @@ export default function OperationsPage() {
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-page-title text-[#F1F5F9]">Operations</h1>
+          <h1 className="text-page-title text-[#0F172A]">Operations</h1>
           <p className="text-[12px] text-[#64748B] mt-1 flex items-center gap-1.5">
             <Clock size={11} />
             Operations Manager View · STORE-01
@@ -108,7 +108,7 @@ export default function OperationsPage() {
         <DashboardCard delay={0} className="py-3">
           <div className="flex items-center gap-3 mb-2">
             <Zap size={13} className="text-[#F59E0B]" />
-            <span className="text-[12px] font-600 text-[#F1F5F9]">Live Stress Trend</span>
+            <span className="text-[12px] font-600 text-[#0F172A]">Live Stress Trend</span>
             <span className="ml-auto text-[11px]" style={{ color: scoreColor }}>{score}/100</span>
           </div>
           <TrendChart
@@ -133,7 +133,7 @@ export default function OperationsPage() {
             {/* Header */}
             <div className="flex items-center gap-2 mb-3">
               <AlertTriangle size={14} className="text-[#F59E0B]" />
-              <span className="text-[13px] font-600 text-[#F1F5F9]">Alert Queue</span>
+              <span className="text-[13px] font-600 text-[#0F172A]">Alert Queue</span>
               <span className="ml-auto text-[10px] bg-[rgba(239,68,68,0.15)] text-[#FCA5A5] px-1.5 py-0.5 rounded-full font-700">
                 {filteredAlerts.length}
               </span>
@@ -162,7 +162,7 @@ export default function OperationsPage() {
                     'text-[10px] font-600 uppercase px-2 py-1 rounded-lg transition-colors flex-shrink-0',
                     alertFilter === f
                       ? 'bg-[#3B82F6] text-white'
-                      : 'text-[#64748B] bg-[#0F172A] hover:text-[#F1F5F9]',
+                      : 'text-[#64748B] bg-[#FFFFFF] hover:text-[#0F172A]',
                   )}
                 >
                   {f}
@@ -216,7 +216,7 @@ export default function OperationsPage() {
                     <span className="text-[10px] text-[#64748B] font-500 uppercase tracking-wider">{item.label}</span>
                   </div>
                   <div className="flex items-end gap-2">
-                    <span className="text-[22px] font-700 text-[#F1F5F9]">{item.value}</span>
+                    <span className="text-[22px] font-700 text-[#0F172A]">{item.value}</span>
                     <Trend size={14} style={{ color: item.trend === 'up' ? '#EF4444' : '#10B981' }} />
                   </div>
                 </DashboardCard>
@@ -228,10 +228,10 @@ export default function OperationsPage() {
           <DashboardCard className="flex-1" delay={0.15}>
             <div className="flex items-center gap-2 mb-4">
               <Package size={14} className="text-[#F59E0B]" />
-              <span className="text-[13px] font-600 text-[#F1F5F9]">Inventory Status</span>
+              <span className="text-[13px] font-600 text-[#0F172A]">Inventory Status</span>
               <button
                 onClick={() => setSortStock(sortStock === 'asc' ? 'desc' : 'asc')}
-                className="ml-auto flex items-center gap-1 text-[11px] text-[#64748B] hover:text-[#F1F5F9] transition-colors"
+                className="ml-auto flex items-center gap-1 text-[11px] text-[#64748B] hover:text-[#0F172A] transition-colors"
               >
                 <Filter size={11} />
                 Stock {sortStock === 'asc' ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
@@ -241,7 +241,7 @@ export default function OperationsPage() {
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="border-b border-[#1E293B]">
+                  <tr className="border-b border-[#E2E8F0]">
                     {['SKU', 'Product', 'On Hand', 'Reorder', 'Status'].map((col) => (
                       <th key={col} className="pb-2 text-[10px] font-600 text-[#475569] uppercase tracking-wider pr-3">
                         {col}
@@ -262,7 +262,7 @@ export default function OperationsPage() {
                       >
                         <td className="py-2.5 pr-3 text-[12px] font-600 text-[#64748B]">{item.sku}</td>
                         <td className="py-2.5 pr-3 text-[12px] text-[#E2E8F0] truncate max-w-[120px]">{item.name}</td>
-                        <td className="py-2.5 pr-3 text-[13px] font-700 text-[#F1F5F9] tabular-nums">{item.stock}</td>
+                        <td className="py-2.5 pr-3 text-[13px] font-700 text-[#0F172A] tabular-nums">{item.stock}</td>
                         <td className="py-2.5 pr-3 text-[12px] text-[#64748B] tabular-nums">{item.reorder}</td>
                         <td className="py-2.5">
                           <span

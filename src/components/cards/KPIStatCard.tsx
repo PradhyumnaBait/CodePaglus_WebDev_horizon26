@@ -30,7 +30,7 @@ const STATUS_STYLE = {
   healthy: 'border-[rgba(16,185,129,0.15)]',
   warning: 'border-[rgba(245,158,11,0.2)]',
   crisis:  'border-[rgba(239,68,68,0.2)]  animate-crisis-pulse',
-  neutral: 'border-[#1E293B]',
+  neutral: 'border-[#E2E8F0]',
 };
 
 export function KPIStatCard({
@@ -65,7 +65,7 @@ export function KPIStatCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: 'easeOut' }}
       className={cn(
-        'relative rounded-2xl p-5 bg-[#1E293B] border overflow-hidden',
+        'relative rounded-2xl p-5 bg-[#F8FAFC] border overflow-hidden',
         'hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] transition-shadow duration-200',
         STATUS_STYLE[status],
         className,
@@ -94,7 +94,7 @@ export function KPIStatCard({
           key={String(value)}
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-[26px] font-700 text-[#F1F5F9] leading-none"
+          className="text-[26px] font-700 text-[#0F172A] leading-none"
         >
           {value}
         </motion.span>
