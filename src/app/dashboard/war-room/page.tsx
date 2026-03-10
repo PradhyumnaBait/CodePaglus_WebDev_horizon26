@@ -220,7 +220,8 @@ export default function WarRoomPage() {
               title="Root Cause Analysis"
               subtitle="AI-detected contributing factors"
             />
-            <div className="space-y-2.5">
+            {/* TASK 2: space-y-3 → space-y-4 for more breathing room between causes */}
+            <div className="space-y-4">
               {rootCauses.map((cause, i) => {
                 const cfg  = CATEGORY_STYLE[cause.category];
                 const Icon = cfg.icon;
@@ -230,33 +231,38 @@ export default function WarRoomPage() {
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.15 + i * 0.08 }}
-                    className="flex gap-3 p-3 rounded-xl"
+                    // TASK 2: padding p-3 → p-4 for more internal breathing room
+                    className="flex gap-4 p-4 rounded-xl"
                     style={{ backgroundColor: `${cfg.color}08`, border: `1px solid ${cfg.color}20` }}
                   >
                     <div
-                      className="flex-shrink-0 flex items-center justify-center w-7 h-7 rounded-lg mt-0.5"
-                      style={{ backgroundColor: `${cfg.color}15` }}
+                      className="flex-shrink-0 flex items-center justify-center rounded-xl mt-0.5"
+                      // TASK 2: icon box slightly larger w-8 h-8 → better visual balance
+                      style={{ width: 34, height: 34, backgroundColor: `${cfg.color}15` }}
                     >
-                      <Icon size={13} style={{ color: cfg.color }} />
+                      <Icon size={14} style={{ color: cfg.color }} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-0.5">
-                        <span className="text-[12px] font-600 text-[#0F172A]">{cause.title}</span>
+                      {/* TASK 2: mb-0.5 → mb-2 so title and progress bar have space */}
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-[13px] font-600 text-[#0F172A]">{cause.title}</span>
                         <div className="ml-auto flex-shrink-0">
-                          <div className="flex items-center gap-1">
-                            <div className="w-12 h-1.5 rounded-full bg-[#FFFFFF] overflow-hidden">
+                          <div className="flex items-center gap-1.5">
+                            {/* TASK 2: progress bar wider w-16 for better readability */}
+                            <div className="w-16 h-2 rounded-full bg-[#F1F5F9] overflow-hidden">
                               <div
                                 className="h-full rounded-full"
                                 style={{ width: `${cause.probability}%`, backgroundColor: cfg.color }}
                               />
                             </div>
-                            <span className="text-[10px]" style={{ color: cfg.color }}>{cause.probability}%</span>
+                            <span className="text-[11px] font-600" style={{ color: cfg.color }}>{cause.probability}%</span>
                           </div>
                         </div>
                       </div>
-                      <p className="text-[11px] text-[#64748B] line-clamp-1">{cause.impact}</p>
+                      {/* TASK 2: line-clamp-1 → line-clamp-2 + leading-relaxed so description breaths */}
+                      <p className="text-[12px] text-[#64748B] leading-relaxed line-clamp-2">{cause.impact}</p>
                       <button
-                        className="mt-1.5 text-[10px] font-600 px-2 py-0.5 rounded-md"
+                        className="mt-2 text-[11px] font-600 px-2.5 py-1 rounded-lg"
                         style={{ color: cfg.color, backgroundColor: `${cfg.color}15` }}
                       >
                         → {cause.action}
@@ -271,7 +277,8 @@ export default function WarRoomPage() {
           {/* Emergency Action Grid */}
           <DashboardCard delay={0.2}>
             <CardHeader title="Emergency Actions" subtitle={`${executedActions.size}/${EMERGENCY_ACTIONS.length} executed`} />
-            <div className="grid grid-cols-2 gap-2.5">
+            {/* TASK 2: gap-2.5 → gap-3 for more room between action buttons */}
+            <div className="grid grid-cols-2 gap-3">
               {EMERGENCY_ACTIONS.map((action, i) => {
                 const Icon     = action.icon;
                 const done     = executedActions.has(action.id);
@@ -284,7 +291,8 @@ export default function WarRoomPage() {
                     whileHover={!done ? { scale: 1.02 } : undefined}
                     whileTap={!done ? { scale: 0.98 } : undefined}
                     onClick={() => !done && executeAction(action.id)}
-                    className={`text-left p-3 rounded-xl border transition-all duration-150 ${
+                    // TASK 2: padding p-3 → p-4 for internal breathing room
+                    className={`text-left p-4 rounded-xl border transition-all duration-150 ${
                       done
                         ? 'opacity-50 border-[#E2E8F0] bg-[#FFFFFF] cursor-default'
                         : 'cursor-pointer hover:opacity-90'
@@ -294,19 +302,21 @@ export default function WarRoomPage() {
                       borderColor:     `${action.color}25`,
                     } : undefined}
                   >
-                    <div className="flex items-center gap-2 mb-1">
+                    {/* TASK 2: gap-2 → gap-2.5 and mb-1 → mb-2 for label breathing room */}
+                    <div className="flex items-center gap-2.5 mb-2">
                       {done
-                        ? <CheckCheck size={13} className="text-[#10B981]" />
-                        : <Icon size={13} style={{ color: action.color }} />
+                        ? <CheckCheck size={14} className="text-[#10B981]" />
+                        : <Icon size={14} style={{ color: action.color }} />
                       }
                       <span
-                        className="text-[10px] font-600 uppercase tracking-wider"
+                        className="text-[10.5px] font-700 uppercase tracking-wider"
                         style={{ color: done ? '#10B981' : action.color }}
                       >
                         {action.category}
                       </span>
                     </div>
-                    <p className="text-[11px] text-[#0F172A] font-500 leading-snug">
+                    {/* TASK 2: font-size 11px → 12.5px, leading-snug → leading-relaxed */}
+                    <p className="text-[12.5px] text-[#0F172A] font-500 leading-relaxed">
                       {done ? '✓ ' : ''}{action.title}
                     </p>
                   </motion.button>

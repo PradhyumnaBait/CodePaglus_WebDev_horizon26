@@ -22,6 +22,7 @@ import {
   Zap,
   Package,
   FileText,
+  Bot,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAlertsStore } from '@/store/alertsStore';
@@ -35,16 +36,19 @@ interface NavItem {
   href: string;
   icon: React.ComponentType<{ size?: number; className?: string }>;
   warRoom?: boolean;
+  badge?: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { label: 'Operations', href: '/dashboard/operations', icon: Settings2 },
-  { label: 'Inventory', href: '/dashboard/inventory', icon: Package },
-  { label: 'Reports', href: '/dashboard/reports', icon: FileText },
-  { label: 'War Room', href: '/dashboard/war-room', icon: Siren, warRoom: true },
-  { label: 'Alerts', href: '/dashboard/alerts', icon: Bell },
-  { label: 'Settings', href: '/dashboard/settings', icon: Settings },
+  { label: 'Dashboard',    href: '/dashboard',              icon: LayoutDashboard },
+  { label: 'Operations',   href: '/dashboard/operations',   icon: Settings2       },
+  { label: 'Inventory',    href: '/dashboard/inventory',    icon: Package         },
+  { label: 'Reports',      href: '/dashboard/reports',      icon: FileText        },
+  { label: 'War Room',     href: '/dashboard/war-room',     icon: Siren, warRoom: true },
+  { label: 'Alerts',       href: '/dashboard/alerts',       icon: Bell            },
+  // AI Assistant — Task 3 new page
+  { label: 'AI Assistant', href: '/dashboard/ai-assistant', icon: Bot, badge: 'AI' },
+  { label: 'Settings',     href: '/dashboard/settings',     icon: Settings        },
 ];
 
 export function Sidebar() {
