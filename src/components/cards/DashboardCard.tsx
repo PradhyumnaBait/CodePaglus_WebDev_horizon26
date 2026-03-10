@@ -9,34 +9,34 @@ import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
 interface DashboardCardProps {
-  children:   ReactNode;
+  children: ReactNode;
   className?: string;
-  variant?:   'default' | 'flat' | 'glow';
+  variant?: 'default' | 'flat' | 'glow';
   glowColor?: string;
   /** If set, animates in with a stagger delay */
-  delay?:     number;
-  onClick?:   () => void;
+  delay?: number;
+  onClick?: () => void;
 }
 
 export function DashboardCard({
   children,
   className,
-  variant   = 'default',
+  variant = 'default',
   glowColor,
-  delay     = 0,
+  delay = 0,
   onClick,
 }: DashboardCardProps) {
   const base = cn(
     'relative rounded-2xl p-5 transition-all duration-200 overflow-hidden',
     variant === 'default' && 'ops-card',
-    variant === 'flat'    && 'ops-card-flat',
-    variant === 'glow'    && 'ops-card border border-[rgba(59,130,246,0.2)]',
+    variant === 'flat' && 'ops-card-flat',
+    variant === 'glow' && 'ops-card border border-[rgba(37,99,235,0.2)]',
     onClick && 'cursor-pointer',
     className,
   );
 
   const style = glowColor
-    ? { boxShadow: `0 0 24px ${glowColor}20, 0 4px 24px rgba(0,0,0,0.4)` }
+    ? { boxShadow: `0 0 24px ${glowColor}15, 0 1px 3px rgba(0,0,0,0.08)` }
     : undefined;
 
   return (
@@ -50,7 +50,7 @@ export function DashboardCard({
       onClick={onClick}
     >
       {/* Subtle top highlight */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.06)] to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(0,0,0,0.04)] to-transparent" />
       {children}
     </motion.div>
   );
@@ -58,10 +58,10 @@ export function DashboardCard({
 
 /** Compact inline card header with optional icon + trailing action */
 interface CardHeaderProps {
-  title:    string;
+  title: string;
   subtitle?: string;
-  icon?:    ReactNode;
-  action?:  ReactNode;
+  icon?: ReactNode;
+  action?: ReactNode;
 }
 
 export function CardHeader({ title, subtitle, icon, action }: CardHeaderProps) {
@@ -69,13 +69,13 @@ export function CardHeader({ title, subtitle, icon, action }: CardHeaderProps) {
     <div className="flex items-start justify-between mb-4">
       <div className="flex items-center gap-2.5">
         {icon && (
-          <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[rgba(59,130,246,0.1)]">
+          <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-[rgba(37,99,235,0.08)]">
             {icon}
           </div>
         )}
         <div>
-          <h3 className="text-[14px] font-600 text-[#F1F5F9] leading-tight">{title}</h3>
-          {subtitle && <p className="text-[11px] text-[#64748B] mt-0.5">{subtitle}</p>}
+          <h3 className="text-[14px] font-600 text-[#111827] leading-tight">{title}</h3>
+          {subtitle && <p className="text-[11px] text-[#9CA3AF] mt-0.5">{subtitle}</p>}
         </div>
       </div>
       {action && <div className="flex-shrink-0">{action}</div>}
