@@ -83,7 +83,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
               placeholder="you@company.com"
-              className={`w-full pl-10 pr-4 py-2.5 rounded-xl border text-[14px] text-[#0F172A] placeholder:text-[#CBD5E1] outline-none transition-all duration-200 bg-[#F8FAFC] focus:bg-white focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] ${errors.email ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
+              className={`w-full pl-12 pr-4 py-3.5 rounded-full border text-[15px] text-[#0F172A] placeholder:text-[#CBD5E1] outline-none transition-all duration-200 bg-[#F8FAFC] focus:bg-white focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] ${errors.email ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                 }`}
               autoComplete="email"
             />
@@ -112,7 +112,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => { setPassword(e.target.value); setErrors((p) => ({ ...p, password: undefined })); }}
               placeholder="Enter your password"
-              className={`w-full pl-10 pr-11 py-2.5 rounded-xl border text-[14px] text-[#0F172A] placeholder:text-[#CBD5E1] outline-none transition-all duration-200 bg-[#F8FAFC] focus:bg-white focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] ${errors.password ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
+              className={`w-full pl-12 pr-12 py-3.5 rounded-full border text-[15px] text-[#0F172A] placeholder:text-[#CBD5E1] outline-none transition-all duration-200 bg-[#F8FAFC] focus:bg-white focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB] ${errors.password ? 'border-[#EF4444]' : 'border-[#E2E8F0]'
                 }`}
               autoComplete="current-password"
             />
@@ -134,8 +134,8 @@ export default function LoginPage() {
         </div>
 
         {/* Forgot password link — CHANGE 1: proper spacing */}
-        <div className="flex justify-end -mt-1">
-          <button type="button" className="text-[13px] text-[#2563EB] hover:text-[#1D4ED8] font-medium transition-colors duration-150 focus:outline-none focus:underline">
+        <div className="flex justify-end mt-1">
+          <button type="button" className="text-[14px] text-[#2563EB] hover:text-[#1D4ED8] font-medium transition-colors duration-150 focus:outline-none focus:underline">
             Forgot password?
           </button>
         </div>
@@ -146,7 +146,7 @@ export default function LoginPage() {
           disabled={loading}
           whileHover={{ scale: loading ? 1 : 1.01 }}
           whileTap={{ scale: loading ? 1 : 0.98 }}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-white text-[14px] font-semibold transition-all duration-200 disabled:opacity-60"
+          className="w-full flex items-center justify-center gap-2 py-3.5 rounded-full text-white text-[16px] font-semibold transition-all duration-200 disabled:opacity-60 mt-4"
           style={{
             background: 'linear-gradient(120deg, #2563EB 0%, #3B82F6 100%)',
             boxShadow: '0 4px 14px rgba(37,99,235,0.35)',
@@ -173,7 +173,7 @@ export default function LoginPage() {
 
       {/* OTP Login option — CHANGE 1: hover + transition improvements */}
       <Link href="/auth/verify-otp">
-        <button className="w-full py-2.5 rounded-xl border border-[#E2E8F0] text-[13px] font-medium text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC] hover:border-[#CBD5E1] hover:shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB]">
+        <button className="w-full py-3.5 rounded-full border border-[#E2E8F0] text-[15px] font-semibold text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC] hover:border-[#CBD5E1] hover:shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/20 focus:border-[#2563EB]">
           Sign in with Mobile OTP
         </button>
       </Link>

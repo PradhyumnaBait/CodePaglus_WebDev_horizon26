@@ -355,12 +355,12 @@ export default function HomePage() {
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div
             style={{
-              borderRadius: 20,
+              borderRadius: 24,
               overflow: 'hidden',
               border: '1px solid #E2E8F0',
-              boxShadow: '0 4px 8px rgba(15,23,42,0.04), 0 20px 60px rgba(15,23,42,0.08)',
+              boxShadow: '0 12px 32px rgba(15,23,42,0.06), 0 24px 64px rgba(15,23,42,0.04)',
               background: '#FFFFFF',
-              padding: 'clamp(20px,3vw,32px)',
+              padding: 'clamp(32px,4vw,48px)',
             }}
           >
             {/* Mini dashboard header */}
@@ -425,8 +425,8 @@ export default function HomePage() {
                   style={{
                     background: '#F8FAFC',
                     border: '1px solid #E2E8F0',
-                    borderRadius: 12,
-                    padding: '14px 16px',
+                    borderRadius: 16,
+                    padding: '24px 28px',
                     textAlign: 'left',
                   }}
                 >
@@ -448,12 +448,12 @@ export default function HomePage() {
               style={{
                 background: 'linear-gradient(180deg,#EFF6FF,#F8FAFC)',
                 border: '1px solid #DBEAFE',
-                borderRadius: 12,
-                padding: '16px 20px',
+                borderRadius: 16,
+                padding: '24px 32px',
                 display: 'flex',
                 alignItems: 'flex-end',
-                gap: 6,
-                height: 100,
+                gap: 12,
+                height: 180,
               }}
             >
               {[40, 65, 45, 80, 55, 70, 62, 75, 58, 83, 70, 90, 68, 78, 82, 88, 72, 95].map(
@@ -462,10 +462,10 @@ export default function HomePage() {
                     key={i}
                     style={{
                       flex: 1,
-                      borderRadius: '3px 3px 0 0',
+                      borderRadius: '6px 6px 0 0',
                       background: `linear-gradient(180deg, #3B82F6, #1D4ED8)`,
                       height: `${h}%`,
-                      opacity: 0.7 + (i / 20),
+                      opacity: 0.85 + (i / 40),
                     }}
                   />
                 )
