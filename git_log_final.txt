@@ -1,0 +1,232 @@
+* afd394b Fix: migrated backend utilities to src and resolved Next.js build and TypeScript errors
+| D	ALERTS_DOCUMENTATION.md
+| D	ALERTS_QUICK_START.md
+| D	Design_doc.md
+| D	PRD.md
+| D	Tech_stack.md
+| D	eslint.config.mjs
+| M	next.config.js
+| D	next.config.ts
+| M	package-lock.json
+| D	postcss.config.mjs
+| D	public/file.svg
+| D	public/globe.svg
+| D	public/next.svg
+| D	public/vercel.svg
+| D	public/window.svg
+| D	src/app/api/alerts/[id]/[action]/route.ts
+| D	src/app/api/alerts/route.ts
+| D	src/app/auth/biztype/page.tsx
+| D	src/app/auth/inventory-setup/page.tsx
+| M	src/app/dashboard/alerts/page.tsx
+| M	src/components/cards/DashboardCard.tsx
+| M	src/components/navigation/Navbar.tsx
+| M	src/components/navigation/Sidebar.tsx
+| M	src/lib/api/client.ts
+| R100	lib/mongodb.ts	src/lib/mongodb.ts
+| R100	middleware/auth.ts	src/middleware/auth.ts
+| R100	pages/api/analytics/overview.ts	src/pages/api/analytics/overview.ts
+| R100	pages/api/auth/login.ts	src/pages/api/auth/login.ts
+| R100	pages/api/auth/send-otp.ts	src/pages/api/auth/send-otp.ts
+| R100	pages/api/auth/signup.ts	src/pages/api/auth/signup.ts
+| R100	pages/api/auth/verify-otp.ts	src/pages/api/auth/verify-otp.ts
+| R100	pages/api/inventory/[id].ts	src/pages/api/inventory/[id].ts
+| R100	pages/api/inventory/index.ts	src/pages/api/inventory/index.ts
+| R100	pages/api/reports/[id].ts	src/pages/api/reports/[id].ts
+| R100	pages/api/reports/index.ts	src/pages/api/reports/index.ts
+| R100	pages/api/users/me.ts	src/pages/api/users/me.ts
+| M	src/types/index.ts
+| R096	utils/jwt.ts	src/utils/jwt.ts
+| R100	utils/otp.ts	src/utils/otp.ts
+| R100	utils/password.ts	src/utils/password.ts
+| R099	utils/pdfGenerator.ts	src/utils/pdfGenerator.ts
+| A	ts-err-utf8.txt
+| A	ts-err.txt
+| M	ts-errors.txt
+| A	ts-errors_utf8.txt
+| M	tsconfig.json
+| D	types/index.ts
+*   f640000 Merge PR #1: README updates
+|\  
+| * 6618e4e Rename project from OpsPulse to CodePaglus_WebDev_horizon26
+| | M	README.md
+| * caf0c7b Rename project to OpsPulse and enhance README
+| | M	README.md
+* |   ce28b97 Merge backend-dev into main
+|\ \  
+| * | d053bd7 feat: add TypeScript configuration and type definitions  - Created tsconfig.json for TypeScript compiler options. - Added tsconfig.seed.json for seed scripts with CommonJS module support. - Defined user, business, inventory, report, OTP, JWT payload, and API response types in types/index.ts. - Implemented JWT utility functions for signing and verifying tokens in utils/jwt.ts. - Added OTP generation and expiry functions in utils/otp.ts. - Created password hashing and comparison functions in utils/password.ts. - Developed PDF report generation functionality in utils/pdfGenerator.ts, including layout and data presentation.
+|  /  
+| |   A	.env.example
+| |   A	.gitignore
+| |   A	README.md
+| |   A	lib/mongodb.ts
+| |   A	middleware/auth.ts
+| |   A	next.config.js
+| |   A	package.json
+| |   A	pages/api/analytics/overview.ts
+| |   A	pages/api/auth/login.ts
+| |   A	pages/api/auth/send-otp.ts
+| |   A	pages/api/auth/signup.ts
+| |   A	pages/api/auth/verify-otp.ts
+| |   A	pages/api/inventory/[id].ts
+| |   A	pages/api/inventory/index.ts
+| |   A	pages/api/reports/[id].ts
+| |   A	pages/api/reports/index.ts
+| |   A	pages/api/users/me.ts
+| |   A	scripts/sample-data.json
+| |   A	scripts/seed.ts
+| |   A	tsconfig.json
+| |   A	tsconfig.seed.json
+| |   A	types/index.ts
+| |   A	utils/jwt.ts
+| |   A	utils/otp.ts
+| |   A	utils/password.ts
+| |   A	utils/pdfGenerator.ts
+* | 143882a Merge main into frontend-dev
+|\| 
+| * 71c5569 Initial commit
+|   A	README.md
+* 3929752 feat: add alert components and simulator for OpsPulse
+| A	ALERTS_DOCUMENTATION.md
+| A	ALERTS_QUICK_START.md
+| A	src/app/api/alerts/[id]/[action]/route.ts
+| A	src/app/api/alerts/route.ts
+| M	src/app/dashboard/alerts/page.tsx
+| M	src/app/dashboard/layout.tsx
+| A	src/components/alerts/ActiveAlertsList.tsx
+| A	src/components/alerts/AlertBadge.tsx
+| A	src/components/alerts/AlertCard.tsx
+| A	src/components/alerts/AlertDashboardWidget.tsx
+| A	src/components/alerts/AlertSummaryBar.tsx
+| A	src/components/alerts/index.ts
+| A	src/hooks/useAlertSimulator.ts
+| A	src/lib/alerts/rule-engine.ts
+| A	src/lib/alerts/simulator.ts
+| A	src/lib/providers/AlertProvider.tsx
+* 3e3bc37 feat: Implement dashboard settings, war room, and AI assistant pages, introducing new KPI stat card and sidebar components.
+| A	src/app/dashboard/ai-assistant/page.tsx
+| M	src/app/dashboard/settings/page.tsx
+| M	src/app/dashboard/war-room/page.tsx
+| M	src/components/cards/KPIStatCard.tsx
+| M	src/components/navigation/Sidebar.tsx
+* 0c14347 feat: Implement core dashboard functionality, authentication setup, and foundational UI components.
+| M	src/app/auth/inventory-setup/page.tsx
+| M	src/app/auth/layout.tsx
+| M	src/app/dashboard/inventory/page.tsx
+| M	src/app/dashboard/layout.tsx
+| M	src/app/dashboard/operations/page.tsx
+| M	src/app/dashboard/page.tsx
+| M	src/app/dashboard/reports/page.tsx
+| M	src/app/dashboard/war-room/page.tsx
+| M	src/app/globals.css
+| M	src/app/home/page.tsx
+| M	src/components/cards/AlertCard.tsx
+| M	src/components/cards/DashboardCard.tsx
+| M	src/components/navigation/Navbar.tsx
+* cc3b5fa feat: Implement initial user authentication with login, signup, client-side role management, and core navigation components.
+| A	Design_doc.md
+| A	PRD.md
+| A	Tech_stack.md
+| M	src/app/auth/login/page.tsx
+| M	src/app/auth/signup/page.tsx
+| M	src/app/globals.css
+| M	src/components/navigation/Sidebar.tsx
+| A	src/lib/auth.ts
+* f5f413d feat: Introduce dashboard pages for reports, inventory, operations, war room, settings, and alerts, including KPIStatCard, StressScoreGauge, and AlertCard components.
+| M	src/app/dashboard/alerts/page.tsx
+| M	src/app/dashboard/inventory/page.tsx
+| M	src/app/dashboard/operations/page.tsx
+| M	src/app/dashboard/reports/page.tsx
+| M	src/app/dashboard/settings/page.tsx
+| M	src/app/dashboard/war-room/page.tsx
+| M	src/components/cards/AlertCard.tsx
+| M	src/components/cards/KPIStatCard.tsx
+| M	src/components/charts/StressScoreGauge.tsx
+* 0dc6a9c feat: introduce new cash flow and monthly orders charts, and add a PDF report generation utility.
+| M	package-lock.json
+| M	package.json
+| M	src/app/globals.css
+| M	src/components/charts/CashFlowChart.tsx
+| M	src/components/charts/MonthlyOrdersChart.tsx
+| M	src/lib/pdfGenerator.ts
+| A	ts-errors.txt
+* bc14d3e feat: Implement core application structure, authentication flows, and a comprehensive design system with global styles and components.
+| A	src/app/auth/biztype/page.tsx
+| A	src/app/auth/inventory-setup/page.tsx
+| M	src/app/auth/signup/page.tsx
+| M	src/app/auth/verify-otp/page.tsx
+| M	src/app/dashboard/layout.tsx
+| M	src/app/dashboard/page.tsx
+| M	src/app/globals.css
+| A	src/app/home/page.tsx
+| M	src/app/page.tsx
+| M	src/components/navigation/Navbar.tsx
+| M	src/components/navigation/Sidebar.tsx
+* 9d5dfd7 feat: Implement core application structure including authentication, dashboard, inventory management, and navigation components.
+| A	src/app/auth/layout.tsx
+| A	src/app/auth/login/page.tsx
+| A	src/app/auth/signup/page.tsx
+| A	src/app/auth/verify-otp/page.tsx
+| A	src/app/dashboard/inventory/page.tsx
+| M	src/app/dashboard/page.tsx
+| A	src/app/dashboard/reports/page.tsx
+| M	src/app/layout.tsx
+| M	src/app/page.tsx
+| A	src/components/charts/CashFlowChart.tsx
+| A	src/components/charts/MonthlyOrdersChart.tsx
+| M	src/components/navigation/Navbar.tsx
+| M	src/components/navigation/Sidebar.tsx
+| A	src/lib/pdfGenerator.ts
+| A	src/store/inventoryStore.ts
+* 20458d6 feat: Add global CSS file with OpsPulse design system tokens, base styles, and common UI component styles.
+| M	src/app/globals.css
+* e46e642 feat: Add `DashboardCard` and `CardHeader` components for dashboard panel layouts.
+| M	src/components/cards/DashboardCard.tsx
+* 6f35672 feat: introduce Navbar and Sidebar components for primary application navigation
+| M	src/components/navigation/Navbar.tsx
+| M	src/components/navigation/Sidebar.tsx
+* 48b29ed feat: Initial commit of OpsPulse frontend dashboard (Phase 1 & Phase 2 complete)
+  A	.gitignore
+  A	README.md
+  A	eslint.config.mjs
+  A	next.config.ts
+  A	package-lock.json
+  A	package.json
+  A	postcss.config.mjs
+  A	public/file.svg
+  A	public/globe.svg
+  A	public/next.svg
+  A	public/vercel.svg
+  A	public/window.svg
+  A	src/app/dashboard/alerts/page.tsx
+  A	src/app/dashboard/layout.tsx
+  A	src/app/dashboard/operations/page.tsx
+  A	src/app/dashboard/page.tsx
+  A	src/app/dashboard/settings/page.tsx
+  A	src/app/dashboard/war-room/page.tsx
+  A	src/app/favicon.ico
+  A	src/app/globals.css
+  A	src/app/layout.tsx
+  A	src/app/page.tsx
+  A	src/components/cards/AlertCard.tsx
+  A	src/components/cards/DashboardCard.tsx
+  A	src/components/cards/KPIStatCard.tsx
+  A	src/components/charts/LiveEventFeed.tsx
+  A	src/components/charts/StressScoreGauge.tsx
+  A	src/components/charts/TrendChart.tsx
+  A	src/components/navigation/Navbar.tsx
+  A	src/components/navigation/Sidebar.tsx
+  A	src/lib/api/client.ts
+  A	src/lib/config/constants.ts
+  A	src/lib/config/scoring.ts
+  A	src/lib/providers/QueryProvider.tsx
+  A	src/lib/providers/SimulatorProvider.tsx
+  A	src/lib/providers/SocketProvider.tsx
+  A	src/lib/simulator-engine.ts
+  A	src/lib/stress-score-engine.ts
+  A	src/lib/utils.ts
+  A	src/store/alertsStore.ts
+  A	src/store/dashboardStore.ts
+  A	src/store/socketStore.ts
+  A	src/types/index.ts
+  A	tsconfig.json
